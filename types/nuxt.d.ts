@@ -1,12 +1,12 @@
-import { ApiModule } from "../api/index";
+import { ApiModule } from '../api/index';
 
-declare module "app" {
+declare module 'app' {
   interface NuxtApp {
     $api: ApiModule;
   }
 }
 
-declare module "@nuxt/schema" {
+declare module '@nuxt/schema' {
   interface NuxtConfig {
     colorMode?: {
       preference?: string;
