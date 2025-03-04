@@ -68,4 +68,15 @@ export default defineNuxtConfig({
         API_KEY: process.env.API_KEY
       },
     },
+    nitro: {
+      compressPublicAssets: true,
+      preset: 'cloudflare-pages',
+      static:  true,
+      publicAssets: [
+        {
+          dir: 'public',
+          maxAge: 60 * 60 * 24 * 365,
+        },
+      ],
+    },
 });
