@@ -30,6 +30,7 @@ export default defineNuxtConfig({
       head: {
         htmlAttrs: {
           lang: 'uk',
+          class: 'scroll-smooth',
         },
         meta: [
           { charset: 'UTF-8' },
