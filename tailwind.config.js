@@ -10,7 +10,16 @@ export default {
   ],
   jit: true,
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'custom-gray': '#A39F9D',
+        'custom-orange': '#FF5500',
+        'custom-white': '#F5F5F5',
+      },
+      fontFamily: {
+        'space-grotesk': ['Space Grotesk', 'sans-serif'],
+      },
+    },
     screens: {
       // xs: '440px',
       ...defaultTheme.screens,

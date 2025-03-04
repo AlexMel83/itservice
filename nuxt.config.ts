@@ -13,23 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@pinia/nuxt',
   ],
-  tailwindcss: {
-    exposeConfig: true,
-    viewer: true,
-    config: {
-      content: [
-        './components/**/*.{js,vue,ts}',
-        './layouts/**/*.vue',
-        './pages/**/*.vue',
-        './plugins/**/*.{js,ts}',
-        './app.vue',
-        './error.vue',
-      ],
-      theme: {
-        extend: {},
-      },
-    },
-  },
+  css: ['@/assets/css/style.css'],
   i18n: {
     locales: [
       { code: 'en', name: 'EN' },
@@ -64,8 +48,23 @@ export default defineNuxtConfig({
             type: 'image/png',
             href: '/icons/favicon.png',
           },
+          {
+            rel: 'stylesheet', 
+            href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
+          },
         ],
         // script: [],
       },
     },
-})
+    runtimeConfig: {
+      public: {
+        apiKeyMapbox: process.env.APIKEY_MAPBOX,
+        googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+        gtagId: process.env.NUXT_PUBLIC_GTAG_ID || 'G-6RYNGNQ3ZB',
+        apiBase: process.env.API_BASE_URL || 'https://api.memory.pp.ua',
+        isDocker: process.env.NUXT_PUBLIC_IS_DOCKER || 'false',
+        API_URL: process.env.API_URL,
+        API_KEY: process.env.API_KEY
+      },
+    },
+});
