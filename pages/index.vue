@@ -173,6 +173,146 @@
       </div>
     </section>
 
+    <section id="pricing" class="py-12 px-4">
+      <div class="container mx-auto">
+        <h2
+          class="text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-[#A39F9D] to-[#F5F5F5] text-transparent bg-clip-text"
+        >
+          Choose Your Learning Path
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Starter -->
+          <div class="bg-[#090402] p-8 rounded-lg border border-[#5C5C5C] animate-slide-up">
+            <h3 class="text-xl font-space-grotesk text-center mb-4 text-[#F5F5F5]">Starter</h3>
+            <div class="text-center mb-6">
+              <span class="text-4xl font-bold text-[#F5F5F5]">$29</span>
+              <span class="text-[#A39F9D]">/month</span>
+            </div>
+            <ul class="space-y-3 mb-8 text-[#A39F9D]">
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>Access to Basic Courses</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>Community Support</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>Basic Projects</span>
+              </li>
+            </ul>
+            <button class="w-full bg-[#FF5500] text-[#F5F5F5] py-3 rounded-full hover:bg-[#5C5C5C] transition-colors">
+              Start Learning
+            </button>
+          </div>
+
+          <!-- Professional -->
+          <div
+            class="bg-gradient-to-b from-[#080301] to-[#2E2927] p-8 rounded-lg border border-[#2C2722] relative animate-slide-up-delayed-02"
+          >
+            <div
+              class="absolute -top-3 right-4 bg-gradient-to-b from-[#080301] to-[#2E2927] text-[#FF5500] text-xs font-bold px-3 py-1 rounded-full border border-[#FF5500] animate-pulse"
+            >
+              MOST POPULAR
+            </div>
+            <h3 class="text-xl font-space-grotesk text-center mb-4 text-[#F5F5F5]">Professional</h3>
+            <div class="text-center mb-6">
+              <span class="text-4xl font-bold text-[#F5F5F5]">$59</span>
+              <span class="text-[#A39F9D]">/month</span>
+            </div>
+            <ul class="space-y-3 mb-8 text-[#A39F9D]">
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>All Starter Features</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>Advanced Courses</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>1-on-1 Mentoring</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>Real-world Projects</span>
+              </li>
+            </ul>
+            <button class="w-full bg-[#FF5500] text-[#F5F5F5] py-3 rounded-full hover:bg-[#5C5C5C] transition-colors">
+              Start Learning
+            </button>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="bg-[#090402] p-8 rounded-lg border border-[#5C5C5C] animate-slide-up-delayed-04">
+            <h3 class="text-xl font-space-grotesk text-center mb-4 text-[#F5F5F5]">Enterprise</h3>
+            <div class="text-center mb-6">
+              <span class="text-4xl font-bold text-[#F5F5F5]">Custom</span>
+            </div>
+            <ul class="space-y-3 mb-8 text-[#A39F9D]">
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>All Professional Features</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>Custom Learning Paths</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>Team Management</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-[#FF5500] mr-2"></i>
+                <span>Dedicated Support</span>
+              </li>
+            </ul>
+            <button class="w-full bg-[#FF5500] text-[#F5F5F5] py-3 rounded-full hover:bg-[#5C5C5C] transition-colors">
+              Contact Sales
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="py-12 px-4">
+      <div class="container mx-auto">
+        <h2
+          class="text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-[#A39F9D] to-[#F5F5F5] text-transparent bg-clip-text"
+        >
+          About Us
+        </h2>
+        <div class="flex flex-col md:flex-row items-stretch gap-8">
+          <div class="md:w-1/2 flex h-[400px]">
+            <img
+              src="https://ucarecdn.com/d7edf35c-4872-4871-a068-5047b93b13ea/-/format/auto/"
+              alt="Team of experienced developers and instructors collaborating on course content"
+              class="rounded-lg border border-[#5C5C5C] w-full object-cover object-[center_100%]"
+            />
+          </div>
+          <div
+            class="md:w-1/2 flex flex-col justify-center bg-gradient-to-b from-[#080301] to-[#2E2927] p-8 rounded-lg border border-[#2C2722]"
+          >
+            <p class="text-[#A39F9D] text-sm mb-4">
+              At TechEd Pro, we're passionate about making technology education accessible to everyone. Our platform
+              combines cutting-edge learning technology with expert-led instruction to create an engaging and effective
+              learning experience.
+            </p>
+            <p class="text-[#A39F9D] text-sm mb-4">
+              Our team of industry professionals and educators work together to develop comprehensive, up-to-date
+              curricula that reflect the latest trends and best practices in tech. We believe in learning by doing,
+              which is why our courses emphasize hands-on projects and real-world applications.
+            </p>
+            <p class="text-[#A39F9D] text-sm">
+              With thousands of successful students worldwide, we've proven that our approach to online tech education
+              works. Whether you're starting from scratch or advancing your skills, our flexible learning platform and
+              supportive community are here to help you achieve your goals in tech.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="bg-[#090402] text-[#F5F5F5] py-8 border-t border-[#5C5C5C]">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -375,6 +515,14 @@ onMounted(() => {
 
 .animate-slide-up-delayed {
   animation: slideUp 0.6s ease-out 0.3s backwards;
+}
+
+.animate-slide-up-delayed-02 {
+  animation: slideUp 0.6s ease-out 0.2s backwards;
+}
+
+.animate-slide-up-delayed-04 {
+  animation: slideUp 0.6s ease-out 0.4s backwards;
 }
 
 @keyframes slideUp {
