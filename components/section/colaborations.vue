@@ -1,33 +1,33 @@
 <template>
-  <section id="collaboration" class="py-12 px-4 bg-[#080301]">
+  <section id="collaboration" class="py-12 px-4 bg-custom-dark">
     <div class="container mx-auto">
       <h2
         ref="titleRef"
-        class="title-block text-3xl font-space-grotesk text-center mb-8 bg-gradient-to-b from-[#A39F9D] to-[#F5F5F5] text-transparent bg-clip-text"
+        class="title-block text-3xl font-space-grotesk text-center mb-8 bg-gradient-to-b from-custom-gray to-custom-white text-transparent bg-clip-text"
       >
         Запрошуємо до співпраці
       </h2>
       <div
         ref="collaborationRef"
-        class="collaboration-block bg-gradient-to-b from-[#080301] to-[#2E2927] p-8 rounded-lg border border-[#2C2722] max-w-3xl mx-auto"
+        class="collaboration-block bg-gradient-to-b from-custom-dark to-[#2E2927] p-8 rounded-lg border border-[#2C2722] max-w-3xl mx-auto"
       >
-        <p ref="textRef" class="text-block text-[#A39F9D] text-lg mb-6 text-center">
+        <p ref="textRef" class="text-block text-custom-gray text-lg mb-6 text-center">
           Шукаємо талановитих фахівців у Старокостянтинові для створення потужної локальної ІТ-спільноти та реалізації
           важливих соціальних проектів
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div ref="leftBlockRef" class="block-item p-4 border border-[#5C5C5C] rounded-lg">
-            <h3 class="text-[#FF5500] font-semibold mb-3">Кого ми шукаємо:</h3>
-            <ul class="text-[#A39F9D] space-y-2">
+          <div ref="leftBlockRef" class="block-item p-4 border border-custom-border rounded-lg">
+            <h3 class="text-custom-orange font-semibold mb-3">Кого ми шукаємо:</h3>
+            <ul class="text-custom-gray space-y-2">
               <li>• UI/UX Дизайнерів</li>
               <li>• QA інженерів</li>
               <li>• Project Managers</li>
               <li>• Frontend/Backend розробників</li>
             </ul>
           </div>
-          <div ref="rightBlockRef" class="block-item p-4 border border-[#5C5C5C] rounded-lg">
-            <h3 class="text-[#FF5500] font-semibold mb-3">Що ми пропонуємо:</h3>
-            <ul class="text-[#A39F9D] space-y-2">
+          <div ref="rightBlockRef" class="block-item p-4 border border-custom-border rounded-lg">
+            <h3 class="text-custom-orange font-semibold mb-3">Що ми пропонуємо:</h3>
+            <ul class="text-custom-gray space-y-2">
               <li>• Дольову участь у проектах</li>
               <li>• Соціально важливі проекти</li>
               <li>• Командну розробку для швидшої реалізації</li>
@@ -36,10 +36,10 @@
           </div>
         </div>
         <div class="text-center">
-          <p class="text-[#A39F9D] mb-4">Надсилайте ваші пропозиції та побажання на адресу:</p>
+          <p class="text-custom-gray mb-4">Надсилайте ваші пропозиції та побажання на адресу:</p>
           <NuxtLink
             to="mailto:it@starkon.pp.ua?subject=співпраця"
-            class="text-[#FF5500] hover:text-[#FF7733] transition-colors text-lg font-semibold"
+            class="text-custom-orange hover:text-custom-orange transition-colors text-lg font-semibold"
           >
             it@starkon.pp.ua
           </NuxtLink>

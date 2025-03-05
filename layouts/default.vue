@@ -5,5 +5,3 @@
     <FooterMain />
   </div>
 </template>
-
-<script setup></script>

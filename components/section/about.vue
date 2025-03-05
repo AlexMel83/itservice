@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <h2
         ref="titleRef"
-        class="title-block text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-[#A39F9D] to-[#F5F5F5] text-transparent bg-clip-text"
+        class="title-block text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-custom-gray to-custom-white text-transparent bg-clip-text"
       >
         Про нашу команду
       </h2>
@@ -12,22 +12,22 @@
           <img
             src="https://ucarecdn.com/d7edf35c-4872-4871-a068-5047b93b13ea/-/format/auto/"
             alt="Наша команда розробників за роботою"
-            class="rounded-lg border border-[#5C5C5C] w-full object-cover object-[center_100%]"
+            class="rounded-lg border border-custom-border w-full object-cover object-[center_100%]"
           />
         </div>
         <div
           ref="aboutTextRef"
-          class="about-block md:w-1/2 flex flex-col justify-center bg-gradient-to-b from-[#080301] to-[#2E2927] p-8 rounded-lg border border-[#2C2722]"
+          class="about-block md:w-1/2 flex flex-col justify-center bg-gradient-to-b from-custom-dark to-[#2E2927] p-8 rounded-lg border border-[#2C2722]"
         >
-          <p class="text-[#A39F9D] text-sm mb-4">
+          <p class="text-custom-gray text-sm mb-4">
             IT.Starkon - ваш локальний партнер у світі технологій в Хмельницькому районі. Базуючись у Старокостянтинові,
             ми забезпечуємо персональний підхід та постійний зв'язок з кожним клієнтом.
           </p>
-          <p class="text-[#A39F9D] text-sm mb-4">
+          <p class="text-custom-gray text-sm mb-4">
             Наша місія - створювати сучасні, доступні та ефективні цифрові рішення, які працюють на ваш бізнес 24/7. Ми
             не просто розробляємо сайти - ми будуємо надійні онлайн-платформи для вашого успіху.
           </p>
-          <p class="text-[#A39F9D] text-sm">
+          <p class="text-custom-gray text-sm">
             Ми завжди на зв'язку для консультацій та підтримки, готові оперативно вносити зміни в дизайн, контент та
             функціонал відповідно до ваших потреб. Інтегруємо найсучасніші технології, щоб ваш проект завжди був на крок
             попереду.

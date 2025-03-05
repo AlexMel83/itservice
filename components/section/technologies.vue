@@ -1,85 +1,85 @@
 <template>
-  <section id="technologies" class="py-12 px-4 bg-[#080301]">
+  <section id="technologies" class="py-12 px-4 bg-custom-dark">
     <div class="container mx-auto">
       <h2
         ref="titleRef"
-        class="title-block text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-[#A39F9D] to-[#F5F5F5] text-transparent bg-clip-text"
+        class="title-block text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-custom-gray to-custom-white text-transparent bg-clip-text"
       >
         Технології, які ми використовуємо
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Frontend -->
         <div ref="frontendRef" class="category-block space-y-8">
-          <h3 class="text-xl font-space-grotesk text-[#FF5500] mb-6">Frontend</h3>
+          <h3 class="text-xl font-space-grotesk text-custom-orange mb-6">Frontend</h3>
           <div class="space-y-6">
             <div
               v-for="(tech, index) in frontendTechs"
               :key="index"
               :ref="(el) => (techRefs[index] = el)"
-              class="tech-block bg-[#090402] p-6 rounded-lg border border-[#5C5C5C] transition-all duration-300 hover:-translate-y-2 hover:border-[#FF5500]"
+              class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <i :class="[tech.icon, 'text-4xl text-[#FF5500] mr-4']"></i>
-                <h4 class="text-[#F5F5F5]">{{ tech.name }}</h4>
+                <i :class="[tech.icon, 'text-4xl text-custom-orange mr-4']"></i>
+                <h4 class="text-custom-white">{{ tech.name }}</h4>
               </div>
-              <p class="text-[#A39F9D]">{{ tech.description }}</p>
+              <p class="text-custom-gray">{{ tech.description }}</p>
             </div>
           </div>
         </div>
 
         <!-- Backend -->
         <div ref="backendRef" class="category-block space-y-8">
-          <h3 class="text-xl font-space-grotesk text-[#FF5500] mb-6">Backend</h3>
+          <h3 class="text-xl font-space-grotesk text-custom-orange mb-6">Backend</h3>
           <div class="space-y-6">
             <div
               v-for="(tech, index) in backendTechs"
               :key="index"
               :ref="(el) => (techRefs[frontendTechs.length + index] = el)"
-              class="tech-block bg-[#090402] p-6 rounded-lg border border-[#5C5C5C] transition-all duration-300 hover:-translate-y-2 hover:border-[#FF5500]"
+              class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <i :class="[tech.icon, 'text-4xl text-[#FF5500] mr-4']"></i>
-                <h4 class="text-[#F5F5F5]">{{ tech.name }}</h4>
+                <i :class="[tech.icon, 'text-4xl text-custom-orange mr-4']"></i>
+                <h4 class="text-custom-white">{{ tech.name }}</h4>
               </div>
-              <p class="text-[#A39F9D]">{{ tech.description }}</p>
+              <p class="text-custom-gray">{{ tech.description }}</p>
             </div>
           </div>
         </div>
 
         <!-- Хмарні сервіси -->
         <div ref="cloudRef" class="category-block space-y-8">
-          <h3 class="text-xl font-space-grotesk text-[#FF5500] mb-6">Хмарні сервіси</h3>
+          <h3 class="text-xl font-space-grotesk text-custom-orange mb-6">Хмарні сервіси</h3>
           <div class="space-y-6">
             <div
               v-for="(tech, index) in cloudTechs"
               :key="index"
               :ref="(el) => (techRefs[frontendTechs.length + backendTechs.length + index] = el)"
-              class="tech-block bg-[#090402] p-6 rounded-lg border border-[#5C5C5C] transition-all duration-300 hover:-translate-y-2 hover:border-[#FF5500]"
+              class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <i :class="[tech.icon, 'text-4xl text-[#FF5500] mr-4']"></i>
-                <h4 class="text-[#F5F5F5]">{{ tech.name }}</h4>
+                <i :class="[tech.icon, 'text-4xl text-custom-orange mr-4']"></i>
+                <h4 class="text-custom-white">{{ tech.name }}</h4>
               </div>
-              <p class="text-[#A39F9D]">{{ tech.description }}</p>
+              <p class="text-custom-gray">{{ tech.description }}</p>
             </div>
           </div>
         </div>
 
         <!-- Інструменти та платежі -->
         <div ref="toolsRef" class="category-block space-y-8">
-          <h3 class="text-xl font-space-grotesk text-[#FF5500] mb-6">Інструменти та платежі</h3>
+          <h3 class="text-xl font-space-grotesk text-custom-orange mb-6">Інструменти та платежі</h3>
           <div class="space-y-6">
             <div
               v-for="(tech, index) in toolsTechs"
               :key="index"
               :ref="(el) => (techRefs[frontendTechs.length + backendTechs.length + cloudTechs.length + index] = el)"
-              class="tech-block bg-[#090402] p-6 rounded-lg border border-[#5C5C5C] transition-all duration-300 hover:-translate-y-2 hover:border-[#FF5500]"
+              class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <i :class="[tech.icon, 'text-4xl text-[#FF5500] mr-4']"></i>
-                <h4 class="text-[#F5F5F5]">{{ tech.name }}</h4>
+                <i :class="[tech.icon, 'text-4xl text-custom-orange mr-4']"></i>
+                <h4 class="text-custom-white">{{ tech.name }}</h4>
               </div>
-              <p class="text-[#A39F9D]">{{ tech.description }}</p>
+              <p class="text-custom-gray">{{ tech.description }}</p>
             </div>
           </div>
         </div>

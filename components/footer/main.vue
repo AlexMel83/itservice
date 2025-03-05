@@ -1,5 +1,6 @@
+<!-- components/footer/main.vue -->
 <template>
-  <footer id="contacts" class="bg-custom-black text-custom-white py-8 border-t border-custom-border">
+  <footer id="contacts" class="bg-custom-black text-custom-white py-8 border-t border-custom-border relative">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="space-y-4">
@@ -79,13 +80,41 @@
       <div class="text-center mt-8 pt-8 border-t border-custom-border">
         <p class="text-custom-gray">© 2025 IT-Starkon. Всі права захищені.</p>
       </div>
+
+      <!-- Кнопка "Наверх" -->
+      <button
+        v-if="showScrollTop"
+        @click="scrollToTop"
+        class="fixed bottom-6 right-6 bg-custom-orange text-custom-white p-3 w-12 h-12 rounded-full shadow-lg hover:bg-custom-border hover:scale-105 transition-all duration-300 z-50"
+        title="Наверх"
+      >
+        <i class="fas fa-angle-double-up"></i>
+      </button>
     </div>
   </footer>
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+
 const center = ref({ lat: 49.75447, lng: 27.203795 });
 const mapRef = ref(null);
+
+// Состояние видимости кнопки "Наверх"
+const showScrollTop = ref(false);
+
+// Функция для скроллинга наверх
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
+// Проверка положения прокрутки
+const handleScroll = () => {
+  showScrollTop.value = window.scrollY > 100; // Показываем кнопку после прокрутки на 100px
+};
 
 const loadGoogleMapsScript = () => {
   return new Promise((resolve, reject) => {
@@ -105,11 +134,7 @@ const loadGoogleMapsScript = () => {
 };
 
 onMounted(() => {
-  const cleanup = () => {
-    if (window.initMap) delete window.initMap;
-  };
-  onUnmounted(cleanup);
-
+  // Загрузка Google Maps
   loadGoogleMapsScript()
     .then(() => {
       const map = new google.maps.Map(mapRef.value, {
@@ -133,5 +158,12 @@ onMounted(() => {
     .catch((error) => {
       console.error('Failed to load Google Maps:', error);
     });
+
+  // Добавление слушателя прокрутки
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>

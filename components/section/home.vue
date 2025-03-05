@@ -24,7 +24,7 @@
           v-for="(service, index) in services"
           :key="index"
           :ref="(el) => (serviceRefs[index] = el)"
-          class="service-block bg-[#1C1C1C] p-6 rounded-lg hover:bg-[#080301] hover:shadow-lg transition-all duration-300"
+          class="service-block bg-[#1C1C1C] p-6 rounded-lg hover:bg-custom-dark hover:shadow-lg transition-all duration-300"
         >
           <i :class="[service.icon, 'text-custom-orange text-3xl mb-4']"></i>
           <h3 class="text-custom-white text-xl mb-2">{{ service.title }}</h3>

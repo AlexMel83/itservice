@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <h2
         ref="titleRef"
-        class="title-block text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-[#A39F9D] to-[#F5F5F5] text-transparent bg-clip-text"
+        class="title-block text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-custom-gray to-custom-white text-transparent bg-clip-text"
       >
         Наші послуги та ціни
       </h2>
@@ -12,37 +12,39 @@
           v-for="(price, index) in pricingItems"
           :key="index"
           :ref="(el) => (priceRefs[index] = el)"
-          class="price-block bg-[#090402] p-8 rounded-lg border border-[#5C5C5C] transition-all duration-300 hover:-translate-y-2 hover:border-[#FF5500]"
-          :class="{ 'bg-gradient-to-b from-[#080301] to-[#2E2927] border-[#2C2722]': price.popular }"
+          class="price-block bg-[#090402] p-8 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+          :class="{ 'bg-gradient-to-b from-custom-dark to-[#2E2927] border-[#2C2722]': price.popular }"
         >
           <div
             v-if="price.popular"
-            class="absolute -top-3 right-4 bg-gradient-to-b from-[#080301] to-[#2E2927] text-[#FF5500] text-xs font-bold px-3 py-1 rounded-full border border-[#FF5500] animate-pulse"
+            class="absolute -top-3 right-4 bg-gradient-to-b from-custom-dark to-[#2E2927] text-custom-orange text-xs font-bold px-3 py-1 rounded-full border border-custom-orange animate-pulse"
           >
             ПОПУЛЯРНЕ
           </div>
-          <h3 class="text-xl font-space-grotesk text-center mb-4 text-[#F5F5F5]">
+          <h3 class="text-xl font-space-grotesk text-center mb-4 text-custom-white">
             {{ price.title }}
           </h3>
           <div class="text-center mb-6">
             <div>
-              <span class="text-4xl font-bold text-[#F5F5F5]">{{ price.price }}</span>
-              <span class="text-[#A39F9D]"> грн</span>
+              <span class="text-4xl font-bold text-custom-white">{{ price.price }}</span>
+              <span class="text-custom-gray"> грн</span>
             </div>
-            <div v-if="price.monthly" class="text-sm text-[#A39F9D] mt-2">{{ price.monthly }}</div>
+            <div v-if="price.monthly" class="text-sm text-custom-gray mt-2">{{ price.monthly }}</div>
           </div>
-          <ul class="space-y-3 mb-8 text-[#A39F9D]">
+          <ul class="space-y-3 mb-8 text-custom-gray">
             <li v-for="(feature, i) in price.features" :key="i" class="flex items-center">
-              <i class="fas fa-check text-[#FF5500] mr-2"></i>
+              <i class="fas fa-check text-custom-orange mr-2"></i>
               <span>{{ feature }}</span>
             </li>
           </ul>
-          <button class="w-full bg-[#FF5500] text-[#F5F5F5] py-3 rounded-full hover:bg-[#5C5C5C] transition-colors">
+          <button
+            class="w-full bg-custom-orange text-custom-white py-3 rounded-full hover:bg-custom-border transition-colors"
+          >
             Замовити
           </button>
         </div>
       </div>
-      <p class="text-center text-[#A39F9D] mt-8">* Спеціальні знижки для ветеранів та ВПО</p>
+      <p class="text-center text-custom-gray mt-8">* Спеціальні знижки для ветеранів та ВПО</p>
     </div>
   </section>
 </template>
