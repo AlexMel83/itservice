@@ -103,80 +103,249 @@
       </div>
     </section>
 
-    <section id="solutions" class="py-12 px-4 bg-custom-dark">
+    <section id="technologies" class="py-12 px-4 bg-[#080301]">
       <div class="container mx-auto">
         <h2
           class="text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-custom-gray to-custom-white text-transparent bg-clip-text"
         >
-          Compare Our Solutions
+          Технології, які ми використовуємо
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Traditional Learning -->
-          <div class="bg-custom-black p-8 rounded-lg border border-custom-border animate-slide-up">
-            <div class="flex flex-col items-center mb-6">
-              <div class="relative">
-                <i class="fas fa-chalkboard text-4xl text-custom-gray mb-4"></i>
-                <div class="absolute -top-1 -right-1 w-2 h-2 bg-custom-orange rounded-full animate-pulse"></div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Frontend -->
+          <div class="space-y-8">
+            <h3 class="text-xl font-space-grotesk text-custom-orange mb-6">Frontend</h3>
+            <div class="space-y-6">
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-react text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">React/Next.js</h4>
+                </div>
+                <p class="text-custom-gray">Потужні фреймворки для створення SEO-оптимізованих додатків</p>
               </div>
-              <h3 class="text-xl font-space-grotesk text-custom-white">Traditional Learning</h3>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-vuejs text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Vue.js/Nuxt</h4>
+                </div>
+                <p class="text-custom-gray">Прогресивні фреймворки для швидкої розробки</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-mobile-alt text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">PWA</h4>
+                </div>
+                <p class="text-custom-gray">Прогресивні веб-додатки з офлайн підтримкою</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-css3 text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">TailwindCSS</h4>
+                </div>
+                <p class="text-custom-gray">Гнучка система стилізації для адаптивного дизайну</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-code text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">TypeScript</h4>
+                </div>
+                <p class="text-custom-gray">Надійна та безпечна розробка</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-map-marked-alt text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Leaflet</h4>
+                </div>
+                <p class="text-custom-gray">Інтерактивні карти та геолокація</p>
+              </div>
             </div>
-            <ul class="space-y-4 text-custom-gray">
-              <li class="flex items-start">
-                <i class="fas fa-times text-custom-orange mt-1 mr-3"></i>
-                <span>Fixed schedules and rigid learning paths</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-times text-custom-orange mt-1 mr-3"></i>
-                <span>Limited access to learning resources</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-times text-custom-orange mt-1 mr-3"></i>
-                <span>One-size-fits-all teaching approach</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-times text-custom-orange mt-1 mr-3"></i>
-                <span>Minimal hands-on project experience</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-times text-custom-orange mt-1 mr-3"></i>
-                <span>Limited industry networking opportunities</span>
-              </li>
-            </ul>
           </div>
 
-          <!-- Our Online Platform -->
-          <div
-            class="bg-gradient-to-b from-custom-dark to-[#2E2927] text-custom-white p-8 rounded-lg border border-[#2C2722] animate-slide-up-delayed"
-          >
-            <div class="flex flex-col items-center mb-6">
-              <div class="relative">
-                <i class="fas fa-laptop-code text-4xl text-custom-orange mb-4"></i>
-                <div class="absolute -top-1 -right-1 w-2 h-2 bg-custom-orange rounded-full animate-pulse"></div>
+          <!-- Backend -->
+          <div class="space-y-8">
+            <h3 class="text-xl font-space-grotesk text-custom-orange mb-6">Backend</h3>
+            <div class="space-y-6">
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-node-js text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Node.js</h4>
+                </div>
+                <p class="text-custom-gray">Швидкий та масштабований серверний runtime</p>
               </div>
-              <h3 class="text-xl font-space-grotesk">Our Online Platform</h3>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-server text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">NestJS</h4>
+                </div>
+                <p class="text-custom-gray">
+                  Прогресивний Node.js фреймворк для побудови ефективних серверних додатків
+                </p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-database text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">PostgreSQL</h4>
+                </div>
+                <p class="text-custom-gray">Надійна база даних для складних проектів</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-database text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">MySQL</h4>
+                </div>
+                <p class="text-custom-gray">Популярна реляційна база даних для веб-додатків</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-file-code text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Swagger</h4>
+                </div>
+                <p class="text-custom-gray">Автоматична документація API та тестування</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-docker text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Docker</h4>
+                </div>
+                <p class="text-custom-gray">Контейнеризація для стабільного розгортання</p>
+              </div>
             </div>
-            <ul class="space-y-4">
-              <li class="flex items-start">
-                <i class="fas fa-check text-custom-orange mt-1 mr-3"></i>
-                <span>Learn at your own pace, anytime</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-custom-orange mt-1 mr-3"></i>
-                <span>Unlimited access to course materials</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-custom-orange mt-1 mr-3"></i>
-                <span>Personalized learning experience</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-custom-orange mt-1 mr-3"></i>
-                <span>Real-world project portfolio</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-custom-orange mt-1 mr-3"></i>
-                <span>Active tech community network</span>
-              </li>
-            </ul>
+          </div>
+
+          <!-- Хмарні сервіси -->
+          <div class="space-y-8">
+            <h3 class="text-xl font-space-grotesk text-custom-orange mb-6">Хмарні сервіси</h3>
+            <div class="space-y-6">
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-aws text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">AWS</h4>
+                </div>
+                <p class="text-custom-gray">Масштабована хмарна інфраструктура</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-microsoft text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Azure</h4>
+                </div>
+                <p class="text-custom-gray">Корпоративні хмарні рішення від Microsoft</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-google text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Google Cloud</h4>
+                </div>
+                <p class="text-custom-gray">Інноваційні хмарні технології та workspace</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-cloud text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Oracle Cloud</h4>
+                </div>
+                <p class="text-custom-gray">Надійні корпоративні рішення</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-shield-alt text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Cloudflare</h4>
+                </div>
+                <p class="text-custom-gray">Захист та оптимізація продуктивності сайту</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Інструменти та платежі -->
+          <div class="space-y-8">
+            <h3 class="text-xl font-space-grotesk text-custom-orange mb-6">Інструменти та платежі</h3>
+            <div class="space-y-6">
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-wordpress text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">WordPress</h4>
+                </div>
+                <p class="text-custom-gray">Гнучка система управління контентом</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fab fa-git-alt text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Git</h4>
+                </div>
+                <p class="text-custom-gray">Контроль версій та командна робота</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-pencil-ruler text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">Figma</h4>
+                </div>
+                <p class="text-custom-gray">Сучасний дизайн та прототипування</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-credit-card text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">LiqPay</h4>
+                </div>
+                <p class="text-custom-gray">Безпечні платежі для українського бізнесу</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-lock text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">OAuth 2.0</h4>
+                </div>
+                <p class="text-custom-gray">Безпечна авторизація та автентифікація</p>
+              </div>
+              <div
+                class="bg-custom-black p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-code text-4xl text-custom-orange mr-4"></i>
+                  <h4 class="text-custom-white">ESLint/Prettier</h4>
+                </div>
+                <p class="text-custom-gray">Стандартизація та форматування коду</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
