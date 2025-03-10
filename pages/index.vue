@@ -5,7 +5,7 @@
     <SectionTechnologies />
     <SectionServices />
     <SectionAbout />
-    <SectionColaborations />
+    <SectionCollaborations />
   </div>
 </template>
 

@@ -22,6 +22,9 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 defineProps({
   isMenuOpen: Boolean,
@@ -31,14 +34,14 @@ const emit = defineEmits(['closeMenu']);
 
 const activeSection = ref('');
 
-const navLinks = [
-  { id: 'home', text: 'Головна' },
-  { id: 'technologies', text: 'Технології' },
-  { id: 'services', text: 'Послуги' },
-  { id: 'about', text: 'Про нас' },
-  { id: 'colaborations', text: 'Співпраця' },
-  { id: 'contacts', text: 'Контакти' },
-];
+const navLinks = computed(() => [
+  { id: 'home', text: t('menu.home') },
+  { id: 'technologies', text: t('menu.technologies') },
+  { id: 'services', text: t('menu.services') },
+  { id: 'about', text: t('menu.about') },
+  { id: 'collaboration', text: t('menu.collaborations') },
+  { id: 'contacts', text: t('menu.contacts') },
+]);
 
 const closeMenuAndScroll = (sectionId) => {
   document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });

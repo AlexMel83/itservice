@@ -1,5 +1,5 @@
 <template>
-  <div :class="class">
+  <div :class="customClass">
     <div class="flex items-center px-1">
       <div class="flex">
         <button
@@ -47,7 +47,7 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
-  class: String,
+  customClass: String,
   isMenuOpen: Boolean,
 });
 

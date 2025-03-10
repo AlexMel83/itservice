@@ -3,34 +3,36 @@
     <div class="container mx-auto">
       <h2
         ref="titleRef"
-        class="title-block text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-custom-gray to-custom-white text-transparent bg-clip-text"
+        class="text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-custom-gray to-custom-white text-transparent bg-clip-text animate-fade-in"
+        style="--delay: 0ms; --initial-state: 0"
       >
-        Про нашу команду
+        {{ t('about.title') }}
       </h2>
       <div class="flex flex-col md:flex-row items-stretch gap-8">
-        <div ref="aboutImageRef" class="about-block md:w-1/2 flex h-[400px]">
+        <div
+          ref="aboutImageRef"
+          class="md:w-1/2 flex h-[400px] animate-fade-in"
+          style="--delay: 200ms; --initial-state: 0"
+        >
           <img
             src="https://ucarecdn.com/d7edf35c-4872-4871-a068-5047b93b13ea/-/format/auto/"
-            alt="Наша команда розробників за роботою"
+            alt="Our development team at work"
             class="rounded-lg border border-custom-border w-full object-cover object-[center_100%]"
           />
         </div>
         <div
           ref="aboutTextRef"
-          class="about-block md:w-1/2 flex flex-col justify-center bg-gradient-to-b from-custom-dark to-[#2E2927] p-8 rounded-lg border border-[#2C2722]"
+          class="md:w-1/2 flex flex-col justify-center bg-gradient-to-b from-custom-dark to-[#2E2927] p-8 rounded-lg border border-[#2C2722] animate-fade-in"
+          style="--delay: 400ms; --initial-state: 0"
         >
           <p class="text-custom-gray text-sm mb-4">
-            IT.Starkon - ваш локальний партнер у світі технологій в Хмельницькому районі. Базуючись у Старокостянтинові,
-            ми забезпечуємо персональний підхід та постійний зв'язок з кожним клієнтом.
+            {{ t('about.description1') }}
           </p>
           <p class="text-custom-gray text-sm mb-4">
-            Наша місія - створювати сучасні, доступні та ефективні цифрові рішення, які працюють на ваш бізнес 24/7. Ми
-            не просто розробляємо сайти - ми будуємо надійні онлайн-платформи для вашого успіху.
+            {{ t('about.description2') }}
           </p>
           <p class="text-custom-gray text-sm">
-            Ми завжди на зв'язку для консультацій та підтримки, готові оперативно вносити зміни в дизайн, контент та
-            функціонал відповідно до ваших потреб. Інтегруємо найсучасніші технології, щоб ваш проект завжди був на крок
-            попереду.
+            {{ t('about.description3') }}
           </p>
         </div>
       </div>
@@ -39,66 +41,83 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useAnimationStore } from '~/stores/animation';
+
+// i18n
+const { t } = useI18n();
+
+// Pinia store для анимации
+const animationStore = useAnimationStore();
+const SECTION_ID = 'about-section';
 
 // Refs для отслеживания элементов
 const titleRef = ref(null);
 const aboutImageRef = ref(null);
 const aboutTextRef = ref(null);
 
-onMounted(() => {
+// Установка CSS переменной --initial-state
+const setElementInitialState = (el, value) => {
+  if (el) {
+    el.style.setProperty('--initial-state', value);
+  }
+};
+
+// Настройка Intersection Observer
+const setupIntersectionObserver = () => {
+  const alreadyAnimated = animationStore.isSectionAnimated(SECTION_ID);
+
+  if (alreadyAnimated) {
+    setElementInitialState(titleRef.value, 1);
+    setElementInitialState(aboutImageRef.value, 1);
+    setElementInitialState(aboutTextRef.value, 1);
+    return null;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Последовательное добавление классов с задержкой
-          if (entry.target === titleRef.value) {
-            entry.target.classList.add('animate-scale-in');
-            setTimeout(() => {
-              if (aboutImageRef.value) aboutImageRef.value.classList.add('animate-scale-in');
-              if (aboutTextRef.value) aboutTextRef.value.classList.add('animate-scale-in');
-            }, 300); // Задержка 0.3s для блоков после заголовка
-          }
-          observer.unobserve(entry.target); // Останавливаем наблюдение после анимации
+          setElementInitialState(entry.target, 1);
+          observer.unobserve(entry.target);
         }
       });
+      animationStore.setSectionAnimated(SECTION_ID);
     },
     {
-      rootMargin: '0px 0px -15% 0px', // Анимация в нижних 15% экрана
-      threshold: 0.1, // Срабатывает, когда видно 10% элемента
+      rootMargin: '0px 0px -15% 0px',
+      threshold: 0.1,
     },
   );
 
-  // Наблюдаем только за заголовком, чтобы запустить последовательность
   if (titleRef.value) observer.observe(titleRef.value);
+  if (aboutImageRef.value) observer.observe(aboutImageRef.value);
+  if (aboutTextRef.value) observer.observe(aboutTextRef.value);
 
-  onUnmounted(() => {
-    if (titleRef.value) observer.unobserve(titleRef.value);
+  return observer;
+};
+
+let observer = null;
+
+onMounted(() => {
+  nextTick(() => {
+    observer = setupIntersectionObserver();
   });
+});
+
+onUnmounted(() => {
+  if (observer) observer.disconnect();
 });
 </script>
 
 <style scoped>
-/* Анимация масштабирования */
-.animate-scale-in {
-  animation: scaleIn 1s ease-out forwards; /* Увеличена длительность до 1s для плавности */
-}
-
-@keyframes scaleIn {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Начальное состояние для элементов перед анимацией */
-.title-block,
-.about-block {
-  transform: scale(0);
-  opacity: 0;
+.animate-fade-in {
+  opacity: var(--initial-state, 0);
+  transform: translateY(calc((1 - var(--initial-state, 0)) * 40px));
+  transition:
+    opacity 700ms,
+    transform 700ms;
+  transition-delay: var(--delay, 0ms);
 }
 </style>

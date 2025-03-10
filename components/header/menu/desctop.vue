@@ -23,7 +23,7 @@ const navLinks = computed(() => [
   { id: 'technologies', text: t('menu.technologies') },
   { id: 'services', text: t('menu.services') },
   { id: 'about', text: t('menu.about') },
-  { id: 'colaborations', text: t('menu.colaborations') },
+  { id: 'collaboration', text: t('menu.collaborations') },
   { id: 'contacts', text: t('menu.contacts') },
 ]);
 
