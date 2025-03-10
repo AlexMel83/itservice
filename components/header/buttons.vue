@@ -15,7 +15,7 @@
         </button>
         <button
           @click="$emit('toggleMenu')"
-          class="md:hidden text-custom-orange relative w-9 h-9 flex flex-col justify-center items-center gap-1"
+          class="md:hidden text-custom-orange relative w-9 h-9 flex flex-col justify-center items-center gap-1 ml-5"
         >
           <span
             :class="[
