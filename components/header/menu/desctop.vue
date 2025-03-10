@@ -13,15 +13,19 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 const activeSection = ref('');
-const navLinks = [
-  { id: 'home', text: 'Головна' },
-  { id: 'technologies', text: 'Технології' },
-  { id: 'services', text: 'Послуги' },
-  { id: 'about', text: 'Про нас' },
-  { id: 'colaborations', text: 'Співпраця' },
-  { id: 'contacts', text: 'Контакти' },
-];
+const navLinks = computed(() => [
+  { id: 'home', text: t('menu.home') },
+  { id: 'technologies', text: t('menu.technologies') },
+  { id: 'services', text: t('menu.services') },
+  { id: 'about', text: t('menu.about') },
+  { id: 'colaborations', text: t('menu.colaborations') },
+  { id: 'contacts', text: t('menu.contacts') },
+]);
 
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);

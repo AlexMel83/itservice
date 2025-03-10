@@ -3,7 +3,7 @@
     <div class="container mx-auto flex justify-between items-center">
       <NuxtLink
         to="/#home"
-        class="text-xl font-space-grotesk hover:text-custom-orange transition-colors"
+        class="text-xl font-space-grotesk hover:text-custom-orange transition-colors scroll-mt-[80px]"
         @click.prevent="scrollToSection('home')"
       >
         IT-Starkon
