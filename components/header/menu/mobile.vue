@@ -28,6 +28,10 @@ const { t } = useI18n();
 
 defineProps({
   isMenuOpen: Boolean,
+  activeSection: {
+    type: String,
+    default: '',
+  },
 });
 
 const emit = defineEmits(['closeMenu']);

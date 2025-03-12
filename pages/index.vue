@@ -1,4 +1,3 @@
-<!-- pages/index.vue -->
 <template>
   <div class="min-h-screen bg-custom-black font-inter">
     <SectionHome />

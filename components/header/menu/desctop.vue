@@ -14,14 +14,22 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
+import { computed } from 'vue';
+
+// Принимаем activeSection как пропс
+defineProps({
+  activeSection: {
+    type: String,
+    default: '',
+  },
+});
 
 const { t } = useI18n();
 
-const activeSection = ref('');
 const navLinks = computed(() => [
   { id: 'home', text: t('menu.home') },
   { id: 'technologies', text: t('menu.technologies') },
-  { id: 'services', text: t('menu.services') },
+  { id: 'prices', text: t('menu.services') },
   { id: 'about', text: t('menu.about') },
   { id: 'collaboration', text: t('menu.collaborations') },
   { id: 'contacts', text: t('menu.contacts') },
