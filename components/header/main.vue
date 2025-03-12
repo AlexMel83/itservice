@@ -51,26 +51,28 @@ onMounted(() => {
 
   const sections = ['home', 'technologies', 'services', 'about', 'collaboration', 'contacts'];
 
+  // Ждем полной загрузки DOM
   nextTick(() => {
     sections.forEach((sectionId) => {
-      // Ищем только <section> с нужным id
-      const element = document.querySelector(`section#${sectionId}`);
+      const element = document.getElementById(sectionId);
       if (element) {
         observer.observe(element);
-        console.log(`Observing section: ${sectionId}`);
+        console.log(`Observing section: ${sectionId}`); // Отладка
       } else {
-        console.warn(`Section "${sectionId}" not found as <section>`);
+        console.warn(`Section "${sectionId}" not found in DOM on initial mount`);
       }
     });
 
-    // Проверка дубликатов
-    const allServices = document.querySelectorAll('[id="services"]');
-    if (allServices.length > 1) {
-      console.error(`Multiple elements with id="services" found: ${allServices.length}`);
-      allServices.forEach((el, index) => {
-        console.log(`Duplicate #services[${index}]:`, el);
+    // Дополнительная проверка через 1 секунду для асинхронных компонентов
+    setTimeout(() => {
+      sections.forEach((sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element && !observer.takeRecords().some((entry) => entry.target.id === sectionId)) {
+          observer.observe(element);
+          console.log(`Late observing section: ${sectionId}`);
+        }
       });
-    }
+    }, 1000);
   });
 
   onUnmounted(() => {
