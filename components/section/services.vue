@@ -5,7 +5,7 @@
         ref="titleRef"
         class="title-block text-3xl font-space-grotesk text-center mb-12 bg-gradient-to-b from-custom-gray to-custom-white text-transparent bg-clip-text"
       >
-        Наші послуги та ціни
+        {{ $t('services.title') }}
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         <div
@@ -19,32 +19,36 @@
             v-if="price.popular"
             class="absolute -top-3 right-4 bg-gradient-to-b from-custom-dark to-[#2E2927] text-custom-orange text-xs font-bold px-3 py-1 rounded-full border border-custom-orange animate-pulse"
           >
-            ПОПУЛЯРНЕ
+            {{ $t('services.popular') }}
           </div>
           <h3 class="text-xl font-space-grotesk text-center mb-4 text-custom-white">
-            {{ price.title }}
+            {{ $t(`services.items.${price.key}.title`) }}
           </h3>
           <div class="text-center mb-6">
             <div>
-              <span class="text-4xl font-bold text-custom-white">{{ price.price }}</span>
-              <span class="text-custom-gray"> грн</span>
+              <span class="text-4xl font-bold text-custom-white">
+                {{ $t(`services.items.${price.key}.price`, { value: price.price }) }}
+              </span>
+              <span class="text-custom-gray"> {{ $t('services.currency') }}</span>
             </div>
-            <div v-if="price.monthly" class="text-sm text-custom-gray mt-2">{{ price.monthly }}</div>
+            <div v-if="price.monthly" class="text-sm text-custom-gray mt-2">
+              {{ $t(`services.items.${price.key}.monthly`, { value: price.monthly }) }}
+            </div>
           </div>
           <ul class="space-y-3 mb-8 text-custom-gray">
             <li v-for="(feature, i) in price.features" :key="i" class="flex items-center">
               <i class="fas fa-check text-custom-orange mr-2"></i>
-              <span>{{ feature }}</span>
+              <span>{{ $t(`services.items.${price.key}.features.${i}`) }}</span>
             </li>
           </ul>
           <button
             class="w-full bg-custom-orange text-custom-white py-3 rounded-full hover:bg-custom-border transition-colors"
           >
-            Замовити
+            {{ $t('services.order') }}
           </button>
         </div>
       </div>
-      <p class="text-center text-custom-gray mt-8">* Спеціальні знижки для ветеранів та ВПО</p>
+      <p class="text-center text-custom-gray mt-8">{{ $t('services.discount') }}</p>
     </div>
   </section>
 </template>
@@ -52,92 +56,50 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
-// Данные для карточек
+// Данные для карточек — только числа и структура
 const pricingItems = [
   {
-    title: 'Технічна підтримка',
-    price: 'від 300',
-    features: [
-      'Виправлення помилок на сайті',
-      'Оновлення контенту',
-      'Налаштування серверів',
-      'Базова SEO-оптимізація',
-      'Технічні консультації',
-    ],
+    key: 'tech_support',
+    price: 300, // Только число
+    features: Array(5).fill(''),
   },
   {
-    title: '360° Фотозйомка',
-    price: 'від 400',
-    monthly: 'за панораму',
-    features: [
-      'Професійна панорамна зйомка',
-      'Обробка та оптимізація фото',
-      'Інтеграція на сайти',
-      'Публікація в соцмережах',
-      'Висока якість зображень',
-    ],
+    key: 'photo_360',
+    price: 400,
+    monthly: 'per panorama', // Оставляем как идентификатор, переводим в локалях
+    features: Array(5).fill(''),
   },
   {
-    title: 'Віртуальні 3D тури',
-    price: 'від 2000',
+    key: 'virtual_3d_tours',
+    price: 2000,
     popular: true,
-    features: [
-      'Створення інтерактивних турів',
-      'Оптимізація для веб',
-      'Інтеграція на сайти',
-      'Публікація в Google View',
-      'Брендування та кастомізація',
-    ],
+    features: Array(5).fill(''),
   },
   {
-    title: 'Сайт-візитка',
-    price: 'від 1000',
-    monthly: 'від 100 грн/міс',
-    features: [
-      'Адаптивний дизайн',
-      'До 5 сторінок',
-      'Форма зворотного зв’язку',
-      'Базова SEO-оптимізація',
-      'SSL-сертифікат',
-    ],
+    key: 'business_card_site',
+    price: 1000,
+    monthly: 100, // Только число
+    features: Array(5).fill(''),
   },
   {
-    title: 'WordPress',
-    price: 'від 3000',
-    monthly: 'від 100 грн/міс',
+    key: 'wordpress',
+    price: 3000,
+    monthly: 100,
     popular: true,
-    features: [
-      'Преміум шаблон на вибір',
-      'Установка необхідних плагінів',
-      'Інтеграція з соцмережами',
-      'Розширена SEO-оптимізація',
-      'Навчання користування',
-    ],
+    features: Array(5).fill(''),
   },
   {
-    title: 'Індивідуальний дизайн',
-    price: 'від 10000',
-    monthly: 'від 100 грн/міс',
-    features: [
-      'Унікальний дизайн',
-      'Необмежена кількість сторінок',
-      'Інтеграція з CRM',
-      'Повна SEO-оптимізація',
-      'Підтримка 24/7',
-    ],
+    key: 'custom_design',
+    price: 10000,
+    monthly: 100,
+    features: Array(5).fill(''),
   },
   {
-    title: 'Full-stack розробка',
-    price: 'від 20000',
-    monthly: 'від 200 грн/міс',
+    key: 'full_stack_dev',
+    price: 20000,
+    monthly: 200,
     popular: true,
-    features: [
-      'Розробка на Nuxt3/Vue',
-      'Високопродуктивний backend',
-      'Складні інтеграції',
-      'Масштабована архітектура',
-      'Преміум підтримка',
-    ],
+    features: Array(5).fill(''),
   },
 ];
 
@@ -151,26 +113,24 @@ onMounted(() => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Последовательное добавление классов с задержкой
           if (entry.target === titleRef.value) {
             entry.target.classList.add('animate-scale-in');
             setTimeout(() => {
               priceRefs.value.forEach((el) => {
                 if (el) el.classList.add('animate-scale-in');
               });
-            }, 300); // Задержка 0.3s для карточек после заголовка
+            }, 300);
           }
-          observer.unobserve(entry.target); // Останавливаем наблюдение после анимации
+          observer.unobserve(entry.target);
         }
       });
     },
     {
-      rootMargin: '0px 0px -15% 0px', // Анимация в нижних 15% экрана
-      threshold: 0.1, // Срабатывает, когда видно 10% элемента
+      rootMargin: '0px 0px -15% 0px',
+      threshold: 0.1,
     },
   );
 
-  // Наблюдаем только за заголовком, чтобы запустить последовательность
   if (titleRef.value) observer.observe(titleRef.value);
 
   onUnmounted(() => {
@@ -182,7 +142,7 @@ onMounted(() => {
 <style scoped>
 /* Анимация масштабирования */
 .animate-scale-in {
-  animation: scaleIn 1s ease-out forwards; /* Увеличена длительность до 1s для плавности */
+  animation: scaleIn 1s ease-out forwards;
 }
 
 @keyframes scaleIn {
@@ -196,7 +156,6 @@ onMounted(() => {
   }
 }
 
-/* Начальное состояние для элементов перед анимацией */
 .title-block,
 .price-block {
   transform: scale(0);
