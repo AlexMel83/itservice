@@ -31,6 +31,115 @@ export default defineI18nConfig(() => ({
           },
         },
       },
+      technologies: {
+        title: 'Technologies We Use',
+        categories: {
+          frontend: 'Frontend',
+          backend: 'Backend',
+          cloud: 'Cloud Services',
+          tools: 'Tools & Payments',
+        },
+        frontend: {
+          react_next: {
+            name: 'React/Next.js',
+            description: 'Powerful frameworks for building SEO-optimized applications',
+          },
+          vue_nuxt: {
+            name: 'Vue.js/Nuxt',
+            description: 'Progressive frameworks for rapid development',
+          },
+          pwa: {
+            name: 'PWA',
+            description: 'Progressive web apps with offline support',
+          },
+          tailwindcss: {
+            name: 'TailwindCSS',
+            description: 'Flexible styling system for responsive design',
+          },
+          typescript: {
+            name: 'TypeScript',
+            description: 'Reliable and safe development',
+          },
+          leaflet: {
+            name: 'Leaflet',
+            description: 'Interactive maps and geolocation',
+          },
+        },
+        backend: {
+          nodejs: {
+            name: 'Node.js',
+            description: 'Fast and scalable server-side runtime',
+          },
+          nestjs: {
+            name: 'NestJS',
+            description: 'Progressive Node.js framework for efficient server-side applications',
+          },
+          postgresql: {
+            name: 'PostgreSQL',
+            description: 'Reliable database for complex projects',
+          },
+          mysql: {
+            name: 'MySQL',
+            description: 'Popular relational database for web applications',
+          },
+          swagger: {
+            name: 'Swagger',
+            description: 'Automated API documentation and testing',
+          },
+          docker: {
+            name: 'Docker',
+            description: 'Containerization for stable deployment',
+          },
+        },
+        cloud: {
+          aws: {
+            name: 'AWS',
+            description: 'Scalable cloud infrastructure',
+          },
+          azure: {
+            name: 'Azure',
+            description: 'Enterprise cloud solutions from Microsoft',
+          },
+          google_cloud: {
+            name: 'Google Cloud',
+            description: 'Innovative cloud technologies and workspace',
+          },
+          oracle_cloud: {
+            name: 'Oracle Cloud',
+            description: 'Reliable enterprise solutions',
+          },
+          cloudflare: {
+            name: 'Cloudflare',
+            description: 'Protection and performance optimization for websites',
+          },
+        },
+        tools: {
+          wordpress: {
+            name: 'WordPress',
+            description: 'Flexible content management system',
+          },
+          git: {
+            name: 'Git',
+            description: 'Version control and team collaboration',
+          },
+          figma: {
+            name: 'Figma',
+            description: 'Modern design and prototyping',
+          },
+          liqpay: {
+            name: 'LiqPay',
+            description: 'Secure payments for Ukrainian businesses',
+          },
+          oauth2: {
+            name: 'OAuth 2.0',
+            description: 'Secure authorization and authentication',
+          },
+          eslint_prettier: {
+            name: 'ESLint/Prettier',
+            description: 'Code standardization and formatting',
+          },
+        },
+      },
       services: {
         title: 'Our Services and Prices',
         popular: 'POPULAR',
@@ -189,6 +298,115 @@ export default defineI18nConfig(() => ({
           virtualTours: {
             title: 'Віртуальні тури',
             description: 'Створення інтерактивних 3D-турів по вашим об’єктам',
+          },
+        },
+      },
+      technologies: {
+        title: 'Технології, які ми використовуємо',
+        categories: {
+          frontend: 'Frontend',
+          backend: 'Backend',
+          cloud: 'Хмарні сервіси',
+          tools: 'Інструменти та платежі',
+        },
+        frontend: {
+          react_next: {
+            name: 'React/Next.js',
+            description: 'Потужні фреймворки для створення SEO-оптимізованих додатків',
+          },
+          vue_nuxt: {
+            name: 'Vue.js/Nuxt',
+            description: 'Прогресивні фреймворки для швидкої розробки',
+          },
+          pwa: {
+            name: 'PWA',
+            description: 'Прогресивні веб-додатки з офлайн підтримкою',
+          },
+          tailwindcss: {
+            name: 'TailwindCSS',
+            description: 'Гнучка система стилізації для адаптивного дизайну',
+          },
+          typescript: {
+            name: 'TypeScript',
+            description: 'Надійна та безпечна розробка',
+          },
+          leaflet: {
+            name: 'Leaflet',
+            description: 'Інтерактивні карти та геолокація',
+          },
+        },
+        backend: {
+          nodejs: {
+            name: 'Node.js',
+            description: 'Швидкий та масштабований серверний runtime',
+          },
+          nestjs: {
+            name: 'NestJS',
+            description: 'Прогресивний Node.js фреймворк для побудови ефективних серверних додатків',
+          },
+          postgresql: {
+            name: 'PostgreSQL',
+            description: 'Надійна база даних для складних проектів',
+          },
+          mysql: {
+            name: 'MySQL',
+            description: 'Популярна реляційна база даних для веб-додатків',
+          },
+          swagger: {
+            name: 'Swagger',
+            description: 'Автоматична документація API та тестування',
+          },
+          docker: {
+            name: 'Docker',
+            description: 'Контейнеризація для стабільного розгортання',
+          },
+        },
+        cloud: {
+          aws: {
+            name: 'AWS',
+            description: 'Масштабована хмарна інфраструктура',
+          },
+          azure: {
+            name: 'Azure',
+            description: 'Корпоративні хмарні рішення від Microsoft',
+          },
+          google_cloud: {
+            name: 'Google Cloud',
+            description: 'Інноваційні хмарні технології та workspace',
+          },
+          oracle_cloud: {
+            name: 'Oracle Cloud',
+            description: 'Надійні корпоративні рішення',
+          },
+          cloudflare: {
+            name: 'Cloudflare',
+            description: 'Захист та оптимізація продуктивності сайту',
+          },
+        },
+        tools: {
+          wordpress: {
+            name: 'WordPress',
+            description: 'Гнучка система управління контентом',
+          },
+          git: {
+            name: 'Git',
+            description: 'Контроль версій та командна робота',
+          },
+          figma: {
+            name: 'Figma',
+            description: 'Сучасний дизайн та прототипування',
+          },
+          liqpay: {
+            name: 'LiqPay',
+            description: 'Безпечні платежі для українського бізнесу',
+          },
+          oauth2: {
+            name: 'OAuth 2.0',
+            description: 'Безпечна авторизація та автентифікація',
+          },
+          eslint_prettier: {
+            name: 'ESLint/Prettier',
+            description: 'Стандартизація та форматування коду',
           },
         },
       },
