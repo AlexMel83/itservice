@@ -59,7 +59,7 @@
         </div>
         <form v-if="!isFormSubmitted" @submit.prevent="submitForm" class="space-y-4">
           <div>
-            <label class="block text-[#A39F9D] mb-2">Ваше имя</label>
+            <label class="block text-[#A39F9D] mb-2">{{ t('home.form.name') }}</label>
             <input
               v-model="form.name"
               name="name"
@@ -69,42 +69,53 @@
             />
           </div>
           <div>
-            <label class="block text-[#A39F9D] mb-2">Email</label>
+            <label class="block text-[#A39F9D] mb-2">{{ t('home.form.email') }}</label>
             <input
               v-model="form.email"
               type="email"
               class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
               required
+              @blur="isFormTouched = true"
             />
-            <p v-if="!isEmailValid" class="text-red-500 text-sm mt-1">Введите корректный email</p>
+            <p v-if="isFormTouched && !isEmailValid" class="text-red-500 text-sm mt-1">
+              {{ t('home.form.email_error') }}
+            </p>
           </div>
           <div>
-            <label class="block text-[#A39F9D] mb-2">Телефон</label>
+            <label class="block text-[#A39F9D] mb-2">{{ t('home.form.phone') }}</label>
             <input
               v-model="form.phone"
               type="tel"
+              placeholder="380987654321"
               class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
               required
+              @blur="isFormTouched = true"
             />
-            <p v-if="!isPhoneValid" class="text-red-500 text-sm mt-1">Введите корректный номер телефона</p>
+            <p v-if="isFormTouched && !isPhoneValid" class="text-red-500 text-sm mt-1">
+              {{ t('home.form.phone_error') }}
+            </p>
           </div>
           <div>
-            <label class="block text-[#A39F9D] mb-2">Интересующая услуга</label>
+            <label class="block text-[#A39F9D] mb-2">{{ t('home.form.services.title') }}</label>
             <select
               v-model="form.service"
               name="service"
               required
+              @blur="isFormTouched = true"
               class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
             >
-              <option value="">Выберите услугу</option>
-              <option value="website">Разработка сайта</option>
-              <option value="360">360° съемка</option>
-              <option value="virtual-tour">Виртуальный тур</option>
+              <option value="">{{ t('home.form.services.placeholder') }}</option>
+              <option value="website">{{ t('home.form.services.development') }}</option>
+              <option value="360">{{ t('home.form.services.photo360') }}</option>
+              <option value="virtual-tour">{{ t('home.form.services.virtualTours') }}</option>
+              <option value="360">{{ t('home.form.services.other') }}</option>
             </select>
-            <p v-if="!isServiceValid" class="text-red-500 text-sm mt-1">Пожалуйста, выберите услугу</p>
+            <p v-if="isFormTouched && !isServiceValid" class="text-red-500 text-sm mt-1">
+              {{ t('home.form.services.error') }}
+            </p>
           </div>
           <div>
-            <label class="block text-[#A39F9D] mb-2">Сообщение</label>
+            <label class="block text-[#A39F9D] mb-2">{{ t('home.form.message') }}</label>
             <textarea
               v-model="form.message"
               name="message"
@@ -116,7 +127,7 @@
             class="w-full bg-[#FF5500] text-[#F5F5F5] py-3 rounded-full hover:bg-[#5C5C5C] transition-colors"
             :disabled="!isFormValid"
           >
-            Отправить заявку
+            {{ t('home.form.submit') }}
           </button>
         </form>
         <div v-else class="text-center">
@@ -250,13 +261,22 @@ const form = ref({
 });
 
 const isModalOpen = ref(false);
-const isFormSubmitted = ref(false); // Флаг успешной отправки формы
-const modalTitle = computed(() => (isFormSubmitted.value ? 'Заявка отправлена' : 'Заказать услугу'));
-const successMessage = "Дякуємо за замовлення! Ми зв'яжемось з Вами найближчим часом.";
+const isFormSubmitted = ref(false);
+const isFormTouched = ref(false);
+const modalTitle = computed(() =>
+  isFormSubmitted.value ? t('home.form.modalTitleSubmitted') : t('home.form.modalTitleOrder'),
+);
+const successMessage = t('home.form.successMessage');
 
-const isEmailValid = computed(() => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.value.email));
-const isPhoneValid = computed(() => /^\+380\d{9}$|^0\d{9}$|^\d{9}$/.test(form.value.phone));
-const isServiceValid = computed(() => form.value.service !== '');
+const isEmailValid = computed(() => {
+  return isFormTouched.value && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.value.email);
+});
+const isPhoneValid = computed(() => {
+  return isFormTouched.value && /^\+380\d{9}$|^0\d{9}$|^\d{9}$/.test(form.value.phone);
+});
+const isServiceValid = computed(() => {
+  return isFormTouched.value && form.value.service !== '';
+});
 
 const isFormValid = computed(() => isEmailValid.value && isPhoneValid.value && isServiceValid.value);
 
@@ -268,6 +288,7 @@ const closeModal = () => {
 };
 
 async function submitForm() {
+  isFormTouched.value = true;
   if (!isFormValid.value) return; // Если форма не валидна, не отправляем
 
   try {
@@ -289,11 +310,11 @@ async function submitForm() {
       isFormSubmitted.value = true; // Успешная отправка
     } else {
       console.error('Ошибка:', result);
-      alert('Ошибка при отправке.');
+      alert(t('home.form.errorMessage'));
     }
   } catch (error) {
     console.error('Ошибка:', error);
-    alert('Что-то пошло не так.');
+    alert(t('home.form.errorMessage'));
   }
 }
 </script>
