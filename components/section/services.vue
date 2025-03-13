@@ -45,12 +45,91 @@
           </ul>
           <button
             class="w-full bg-custom-orange text-custom-white py-3 rounded-full hover:bg-custom-border transition-colors"
+            @click="openModal(price)"
           >
             {{ t('services.order') }}
           </button>
         </div>
       </div>
       <p class="text-center text-custom-gray mt-8">{{ t('services.discount') }}</p>
+    </div>
+
+    <!-- Модалка заказа услуги -->
+    <div
+      v-if="isModalOpen"
+      class="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+    >
+      <div class="modal-content bg-[#1C1C1C] p-8 rounded-lg w-96 relative">
+        <!-- Крестик закрытия -->
+        <button @click="closeModal" class="absolute top-4 right-4 text-custom-white text-2xl">&times;</button>
+
+        <!-- Заголовок модалки -->
+        <h3 class="text-center text-custom-white mb-4">
+          Замовлення послуги {{ selectedService ? t(`services.items.${selectedService.key}.title`) : '' }}
+        </h3>
+
+        <form v-if="!isSuccess" @submit.prevent="validateForm" class="pace-y-4">
+          <!-- Ім'я -->
+          <div class="flex flex-col">
+            <label for="name" class="text-[#A39F9D] font-medium mb-2">{{ t('services.modal.name') }}</label>
+            <input
+              id="name"
+              v-model="orderForm.name"
+              type="text"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              :class="{ 'border-red-500': errors.name }"
+            />
+            <p v-if="errors.name" class="text-red-500 text-sm mt-1">{{ errors.name }}</p>
+          </div>
+
+          <!-- Email -->
+          <div class="flex flex-col">
+            <label for="email" class="text-[#A39F9D] font-medium mb-2">{{ t('services.modal.email') }}</label>
+            <input
+              id="email"
+              v-model="orderForm.email"
+              type="email"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              :class="{ 'border-red-500': errors.email }"
+            />
+            <p v-if="errors.email" class="text-red-500 text-sm mt-1">{{ errors.email }}</p>
+          </div>
+
+          <!-- Телефон -->
+          <div class="flex flex-col">
+            <label for="phone" class="text-[#A39F9D] font-medium mb-2">{{ t('services.modal.phone') }}</label>
+            <input
+              id="phone"
+              v-model="orderForm.phone"
+              type="tel"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              :class="{ 'border-red-500': errors.phone }"
+            />
+            <p v-if="errors.phone" class="text-red-500 text-sm mt-1">{{ errors.phone }}</p>
+          </div>
+
+          <!-- Повідомлення -->
+          <div class="flex flex-col mb-4">
+            <label for="message" class="text-[#A39F9D] font-medium mb-2">{{ t('services.modal.message') }}</label>
+            <textarea
+              id="message"
+              v-model="orderForm.message"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <!-- Кнопка відправки -->
+          <button
+            type="submit"
+            class="w-full bg-custom-orange text-custom-white py-3 rounded-full hover:bg-custom-border transition-colors font-semibold"
+          >
+            {{ t('services.modal.submit') }}
+          </button>
+        </form>
+
+        <p v-else class="text-center text-green-500">{{ successMessage }}</p>
+      </div>
     </div>
   </section>
 </template>
@@ -59,6 +138,7 @@
 import { ref, onMounted, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAnimationStore } from '~/stores/animation';
+import * as yup from 'yup';
 
 const { t } = useI18n();
 
@@ -129,6 +209,91 @@ onMounted(() => {
 onUnmounted(() => {
   if (observer) observer.disconnect();
 });
+
+const isModalOpen = ref(false);
+const isSuccess = ref(false);
+const form = ref({
+  name: '',
+  email: '',
+  message: '',
+});
+const formError = ref(false);
+const selectedService = ref(null);
+
+const successMessage = "Дякуємо за замовлення! Ми зв'яжемось з Вами найближчим часом.";
+
+const openModal = (price) => {
+  selectedService.value = { ...price };
+  isModalOpen.value = true;
+};
+
+const closeModal = () => {
+  isModalOpen.value = false;
+};
+
+const submitForm = async () => {
+  formError.value = false;
+
+  if (!orderForm.value.name || !orderForm.value.email || !orderForm.value.message) {
+    formError.value = true;
+    return;
+  }
+
+  const message = `
+    Замовлення на послугу: ${t(`services.items.${selectedService.value.key}.title`)}
+    Ім'я: ${orderForm.value.name}
+    Електронна пошта: ${orderForm.value.email}
+    Телефон: ${orderForm.value.phone}
+    Повідомлення: ${orderForm.value.message}
+  `;
+
+  try {
+    await fetch('/api/telegram', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message }),
+    });
+
+    isSuccess.value = true;
+  } catch (error) {
+    console.error('Ошибка при отправке', error);
+    formError.value = true;
+  }
+};
+
+const orderForm = ref({
+  name: '',
+  email: '',
+  phone: '',
+  message: '',
+});
+
+const validationSchema = yup.object({
+  name: yup.string().required(t('services.modal.validation.required')),
+  email: yup.string().email(t('services.modal.validation.email')).required(t('services.modal.validation.required')),
+  phone: yup
+    .string()
+    .matches(/^\+?\d{10,14}$/, t('services.modal.validation.phone'))
+    .required(t('services.modal.validation.required')),
+  message: yup.string(),
+});
+
+const errors = ref({});
+
+const validateForm = async () => {
+  try {
+    await validationSchema.validate(orderForm.value, { abortEarly: false });
+    errors.value = {};
+    submitForm(); // твоя логіка відправки форми
+  } catch (err) {
+    errors.value = err.inner.reduce((acc, error) => {
+      acc[error.path] = error.message;
+      return acc;
+    }, {});
+  }
+};
 </script>
 
 <style scoped>
@@ -139,5 +304,30 @@ onUnmounted(() => {
     opacity 700ms,
     transform 700ms;
   transition-delay: var(--delay, 0ms);
+}
+
+.modal-overlay {
+  animation: fadeIn 0.3s ease-out;
+}
+.modal-content {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 </style>

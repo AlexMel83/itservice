@@ -168,6 +168,22 @@ export default defineI18nConfig(() => ({
         currency: 'UAH',
         order: 'Order',
         discount: '* Special discounts for veterans and IDPs',
+        modal: {
+          title: 'Order',
+          name: 'Name',
+          email: 'Email',
+          phone: 'Phone',
+          message: 'Message',
+          submit: 'Submit',
+          close: 'Close',
+          success: 'Thank you for your order! We will contact you shortly.',
+          error: 'Error while sending.',
+          validation: {
+            required: 'This field is required',
+            email: 'Enter a valid email',
+            phone: 'Enter a valid phone number',
+          },
+        },
         items: {
           tech_support: {
             title: 'Technical Support',
@@ -460,6 +476,22 @@ export default defineI18nConfig(() => ({
         currency: 'грн',
         order: 'Замовити',
         discount: '* Спеціальні знижки для ветеранів та ВПО',
+        modal: {
+          title: 'Замовлення',
+          name: "Ім'я",
+          email: 'Електронна пошта',
+          phone: 'Телефон',
+          message: 'Повідомлення',
+          submit: 'Відправити',
+          close: 'Закрити',
+          success: "Дякуємо за замовлення! Ми зв'яжемось з Вами найближчим часом.",
+          error: 'Помилка при відправці.',
+          validation: {
+            required: "Це поле обов'язкове",
+            email: 'Введіть коректний email',
+            phone: 'Введіть коректний телефон',
+          },
+        },
         items: {
           tech_support: {
             title: 'Технічна підтримка',
