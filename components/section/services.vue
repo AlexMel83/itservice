@@ -65,7 +65,7 @@
 
         <!-- Заголовок модалки -->
         <h3 class="text-center text-custom-white mb-4">
-          Замовлення послуги {{ selectedService ? t(`services.items.${selectedService.key}.title`) : '' }}
+          {{ t('services.modal.title') }} {{ selectedService ? t(`services.items.${selectedService.key}.title`) : '' }}
         </h3>
 
         <form v-if="!isSuccess" @submit.prevent="validateForm" class="pace-y-4">
@@ -213,7 +213,7 @@ const isSuccess = ref(false);
 const formError = ref(false);
 const selectedService = ref(null);
 
-const successMessage = "Дякуємо за замовлення! Ми зв'яжемось з Вами найближчим часом.";
+const successMessage = t('services.modal.success');
 
 const openModal = (price) => {
   selectedService.value = { ...price };
@@ -238,11 +238,11 @@ const submitForm = async () => {
   }
 
   const message = `
-    Замовлення на послугу: ${t(`services.items.${selectedService.value.key}.title`)}
-    Ім'я: ${orderForm.value.name}
-    Електронна пошта: ${orderForm.value.email}
-    Телефон: ${orderForm.value.phone}
-    Повідомлення: ${orderForm.value.message}
+    ${t('services.modal.title')}: ${t(`services.items.${selectedService.value.key}.title`)}
+    ${t('services.modal.name')}: ${orderForm.value.name}
+    ${t('services.modal.email')}: ${orderForm.value.email}
+    ${t('services.modal.phone')}: ${orderForm.value.phone}
+    ${t('services.modal.message')}: ${orderForm.value.message}
   `;
 
   try {

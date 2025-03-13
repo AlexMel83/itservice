@@ -169,7 +169,7 @@ export default defineI18nConfig(() => ({
         order: 'Order',
         discount: '* Special discounts for veterans and IDPs',
         modal: {
-          title: 'Order',
+          title: 'Order a service',
           name: 'Name',
           email: 'Email',
           phone: 'Phone',
@@ -477,7 +477,7 @@ export default defineI18nConfig(() => ({
         order: 'Замовити',
         discount: '* Спеціальні знижки для ветеранів та ВПО',
         modal: {
-          title: 'Замовлення',
+          title: 'Замовлення послуги',
           name: "Ім'я",
           email: 'Електронна пошта',
           phone: 'Телефон',
