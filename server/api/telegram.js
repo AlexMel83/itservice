@@ -1,4 +1,8 @@
 export default defineEventHandler(async (event) => {
+  if (event.req.method !== 'POST') {
+    return { error: 'Method Not Allowed' }; // Это должно вернуть 405, если метод не POST
+  }
+
   const body = await readBody(event);
 
   const botToken = process.env.BOOT_TOKEN;
