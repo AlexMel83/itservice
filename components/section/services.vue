@@ -175,19 +175,17 @@ const setupIntersectionObserver = () => {
 
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          console.log(`Services local observer: ${entry.target.className} is visible`);
-          setElementInitialState(entry.target, 1);
-          observer.unobserve(entry.target);
-        }
-      });
-      animationStore.setSectionAnimated(SECTION_ID);
+      if (!isModalOpen.value) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setElementInitialState(entry.target, 1);
+            observer.unobserve(entry.target);
+          }
+        });
+        animationStore.setSectionAnimated(SECTION_ID);
+      }
     },
-    {
-      rootMargin: '0px 0px -15% 0px',
-      threshold: 0.1,
-    },
+    { rootMargin: '0px 0px -15% 0px', threshold: 0.1 },
   );
 
   if (titleRef.value) observer.observe(titleRef.value);
@@ -212,11 +210,6 @@ onUnmounted(() => {
 
 const isModalOpen = ref(false);
 const isSuccess = ref(false);
-const form = ref({
-  name: '',
-  email: '',
-  message: '',
-});
 const formError = ref(false);
 const selectedService = ref(null);
 
@@ -229,6 +222,11 @@ const openModal = (price) => {
 
 const closeModal = () => {
   isModalOpen.value = false;
+  // Перезапуск анімації після закриття модалки
+  animationStore.resetSectionAnimation(SECTION_ID);
+  nextTick(() => {
+    setupIntersectionObserver();
+  });
 };
 
 const submitForm = async () => {
