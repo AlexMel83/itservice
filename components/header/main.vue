@@ -2,7 +2,7 @@
   <nav class="bg-custom-black text-custom-white p-4 fixed w-full z-50 border-b border-custom-border">
     <div class="container mx-auto flex justify-between items-center">
       <NuxtLink
-        to="/#home"
+        to="/"
         class="text-xl font-space-grotesk hover:text-custom-orange transition-colors scroll-mt-[80px]"
         @click.prevent="scrollToSection('home')"
       >
@@ -30,7 +30,6 @@ const scrollToSection = (sectionId) => {
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' });
     activeSection.value = sectionId;
-    console.log(`Clicked: activeSection set to ${sectionId}`);
   } else {
     console.warn(`Element with id "${sectionId}" not found`);
   }
@@ -40,7 +39,6 @@ onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        console.log(`Global observer: ${entry.target.id} is intersecting: ${entry.isIntersecting}`);
         if (entry.isIntersecting) {
           activeSection.value = entry.target.id;
         }
@@ -57,7 +55,6 @@ onMounted(() => {
       const element = document.getElementById(sectionId);
       if (element) {
         observer.observe(element);
-        console.log(`Observing section: ${sectionId}`); // Отладка
       } else {
         console.warn(`Section "${sectionId}" not found in DOM on initial mount`);
       }
@@ -69,7 +66,6 @@ onMounted(() => {
         const element = document.getElementById(sectionId);
         if (element && !observer.takeRecords().some((entry) => entry.target.id === sectionId)) {
           observer.observe(element);
-          console.log(`Late observing section: ${sectionId}`);
         }
       });
     }, 1000);

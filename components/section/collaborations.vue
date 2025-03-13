@@ -1,5 +1,8 @@
 <template>
-  <section id="collaboration" class="py-12 px-4 bg-custom-dark">
+  <section
+    id="collaboration"
+    class="min-h-screen flex flex-col justify-center items-center py-12 px-4 bg-custom-dark overflow-visible"
+  >
     <div class="container mx-auto">
       <h2
         ref="titleRef"

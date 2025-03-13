@@ -14,17 +14,20 @@
       </p>
       <button
         ref="buttonRef"
+        @click="openModal"
         class="bg-custom-orange text-custom-white px-8 py-3 rounded-full hover:bg-custom-border transition-colors animate-fade-in"
         style="--delay: 400ms; --initial-state: 0"
       >
         {{ t('home.orderButton') }}
       </button>
       <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div
+        <a
           v-for="(service, index) in serviceKeys"
           :key="service"
           ref="serviceRefs"
           class="bg-[#1C1C1C] p-6 rounded-lg hover:bg-custom-dark hover:shadow-lg transition-all duration-300 animate-fade-in"
+          :href="service === 'webDevelopment' ? 'https://memory.pp.ua/' : 'https://castle.starkon.pp.ua/'"
+          target="_blank"
           :style="`--delay: ${600 + index * 200}ms; --initial-state: 0;`"
         >
           <i :class="[services[service].icon, 'text-custom-orange text-3xl mb-4']"></i>
@@ -34,6 +37,90 @@
           <p class="text-custom-gray">
             {{ t(`home.services.${service}.description`) }}
           </p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div
+      v-if="isModalOpen"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-500"
+      :class="{ 'backdrop-blur-sm': isModalOpen }"
+    >
+      <div
+        class="bg-[#090402] p-8 rounded-lg border border-[#5C5C5C] max-w-md w-full transition-transform duration-500 transform scale-95 opacity-0"
+        :class="{ 'opacity-100 transform scale-100': isModalOpen }"
+      >
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-xl font-space-grotesk text-[#F5F5F5]">{{ modalTitle }}</h3>
+          <button @click="closeModal" class="text-[#A39F9D] hover:text-[#FF5500]">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <form v-if="!isFormSubmitted" @submit.prevent="submitForm" class="space-y-4">
+          <div>
+            <label class="block text-[#A39F9D] mb-2">Ваше имя</label>
+            <input
+              v-model="form.name"
+              name="name"
+              type="text"
+              required
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+            />
+          </div>
+          <div>
+            <label class="block text-[#A39F9D] mb-2">Email</label>
+            <input
+              v-model="form.email"
+              type="email"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              required
+            />
+            <p v-if="!isEmailValid" class="text-red-500 text-sm mt-1">Введите корректный email</p>
+          </div>
+          <div>
+            <label class="block text-[#A39F9D] mb-2">Телефон</label>
+            <input
+              v-model="form.phone"
+              type="tel"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              required
+            />
+            <p v-if="!isPhoneValid" class="text-red-500 text-sm mt-1">Введите корректный номер телефона</p>
+          </div>
+          <div>
+            <label class="block text-[#A39F9D] mb-2">Интересующая услуга</label>
+            <select
+              v-model="form.service"
+              name="service"
+              required
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+            >
+              <option value="">Выберите услугу</option>
+              <option value="website">Разработка сайта</option>
+              <option value="360">360° съемка</option>
+              <option value="virtual-tour">Виртуальный тур</option>
+            </select>
+            <p v-if="!isServiceValid" class="text-red-500 text-sm mt-1">Пожалуйста, выберите услугу</p>
+          </div>
+          <div>
+            <label class="block text-[#A39F9D] mb-2">Сообщение</label>
+            <textarea
+              v-model="form.message"
+              name="message"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500] h-32"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-[#FF5500] text-[#F5F5F5] py-3 rounded-full hover:bg-[#5C5C5C] transition-colors"
+            :disabled="!isFormValid"
+          >
+            Отправить заявку
+          </button>
+        </form>
+        <div v-else class="text-center">
+          <p class="text-[#F5F5F5] text-lg">{{ successMessage }}</p>
         </div>
       </div>
     </div>
@@ -153,6 +240,62 @@ onMounted(() => {
     });
   });
 });
+
+const form = ref({
+  name: '',
+  email: '',
+  phone: '',
+  service: '',
+  message: '',
+});
+
+const isModalOpen = ref(false);
+const isFormSubmitted = ref(false); // Флаг успешной отправки формы
+const modalTitle = computed(() => (isFormSubmitted.value ? 'Заявка отправлена' : 'Заказать услугу'));
+const successMessage = "Дякуємо за замовлення! Ми зв'яжемось з Вами найближчим часом.";
+
+const isEmailValid = computed(() => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.value.email));
+const isPhoneValid = computed(() => /^\+380\d{9}$|^0\d{9}$|^\d{9}$/.test(form.value.phone));
+const isServiceValid = computed(() => form.value.service !== '');
+
+const isFormValid = computed(() => isEmailValid.value && isPhoneValid.value && isServiceValid.value);
+
+const openModal = () => (isModalOpen.value = true);
+const closeModal = () => {
+  isModalOpen.value = false;
+  isFormSubmitted.value = false;
+  form.value = { name: '', email: '', phone: '', service: '', message: '' }; // Очистка формы
+};
+
+async function submitForm() {
+  if (!isFormValid.value) return; // Если форма не валидна, не отправляем
+
+  try {
+    const response = await fetch('/api/telegram', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: `Нове замовлення: 
+- Ім'я: ${form.value.name}
+- Email: ${form.value.email}
+- Телефон: ${form.value.phone}
+- Послуга: ${form.value.service}
+- Повідомлення: ${form.value.message}`,
+      }),
+    });
+
+    const result = await response.json();
+    if (result.ok) {
+      isFormSubmitted.value = true; // Успешная отправка
+    } else {
+      console.error('Ошибка:', result);
+      alert('Ошибка при отправке.');
+    }
+  } catch (error) {
+    console.error('Ошибка:', error);
+    alert('Что-то пошло не так.');
+  }
+}
 </script>
 
 <style scoped>

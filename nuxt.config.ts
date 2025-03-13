@@ -59,13 +59,9 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
       public: {
-        apiKeyMapbox: process.env.APIKEY_MAPBOX,
         googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
-        gtagId: process.env.NUXT_PUBLIC_GTAG_ID || 'G-6RYNGNQ3ZB',
-        apiBase: process.env.API_BASE_URL || 'https://api.memory.pp.ua',
-        isDocker: process.env.NUXT_PUBLIC_IS_DOCKER || 'false',
-        API_URL: process.env.API_URL,
-        API_KEY: process.env.API_KEY
+        bootToken: process.env.BOOT_TOKEN,
+        chatId: process.env.CHAT_ID,
       },
     },
     nitro: {

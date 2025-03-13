@@ -29,7 +29,7 @@ const { t } = useI18n();
 const navLinks = computed(() => [
   { id: 'home', text: t('menu.home') },
   { id: 'technologies', text: t('menu.technologies') },
-  { id: 'prices', text: t('menu.services') },
+  { id: 'services', text: t('menu.services') },
   { id: 'about', text: t('menu.about') },
   { id: 'collaboration', text: t('menu.collaborations') },
   { id: 'contacts', text: t('menu.contacts') },
