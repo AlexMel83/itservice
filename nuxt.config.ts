@@ -66,8 +66,8 @@ export default defineNuxtConfig({
     },
     nitro: {
       compressPublicAssets: true,
-      preset: 'cloudflare-pages',
-      static:  true,
+      // preset: 'cloudflare-pages',
+      // static:  true,
       publicAssets: [
         {
           dir: 'public',
@@ -80,6 +80,6 @@ export default defineNuxtConfig({
         allowedHosts: ['it.starkon.pp.ua', 'localhost', '127.0.0.1'],
       },
     },
-    target: 'static',
-    ssr: false,
+    // target: 'static',
+    // ssr: false,
 });

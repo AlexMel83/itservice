@@ -10,6 +10,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "start": "nuxt preview",
     "postinstall": "nuxt prepare",
     "precommit": "eslint --fix \"./**/*.{js,ts,vue}\" && prettier --write \"./**/*.{js,ts,vue,css,scss}\"",
     "prepare": "husky install"
