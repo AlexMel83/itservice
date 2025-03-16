@@ -3,23 +3,6 @@ import 'dotenv/config';
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-02-20',
-  serverHandlers: [
-    {
-      route: "/",
-      handler: (req, res, next) => {
-        const allowedHosts = ["it.starkon.pp.ua", "localhost"];
-        const host = req.headers.host?.replace(/^https?:\/\//, ""); // Видаляємо префікс http:// або https://
-        
-        if (!host || !allowedHosts.includes(host)) {
-          res.writeHead(403, { "Content-Type": "text/plain" });
-          res.end("Blocked request. This host is not allowed.");
-          return;
-        }
-        
-        next();
-      },
-    },
-  ],
   devtools: { enabled: true },
   components: true,
   modules: [
@@ -82,18 +65,6 @@ export default defineNuxtConfig({
       },
     },
     nitro: {
-      devProxy: {
-        "/": {
-          target: "http://it.starkon.pp.ua",
-          changeOrigin: true,
-        },
-      },
-      devHandlers: [
-        {
-          route: "/api", // Указание пути, для которого будет работать middleware
-          handler: "~/server/middleware/allowed-hosts.ts", // Путь к middleware
-        },
-      ],
       compressPublicAssets: true,
       preset: 'cloudflare-pages',
       static:  true,
