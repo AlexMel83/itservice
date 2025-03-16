@@ -75,6 +75,11 @@ export default defineNuxtConfig({
         },
       ],
     },
+    vite: {
+      server: {
+        allowedHosts: ['it.starkon.pp.ua', 'localhost', '127.0.0.1'],
+      },
+    },
     target: 'static',
     ssr: false,
 });
