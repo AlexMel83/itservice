@@ -13,23 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@pinia/nuxt',
   ],
-  tailwindcss: {
-    exposeConfig: true,
-    viewer: true,
-    config: {
-      content: [
-        './components/**/*.{js,vue,ts}',
-        './layouts/**/*.vue',
-        './pages/**/*.vue',
-        './plugins/**/*.{js,ts}',
-        './app.vue',
-        './error.vue',
-      ],
-      theme: {
-        extend: {},
-      },
-    },
-  },
+  css: ['@/assets/css/style.css'],
   i18n: {
     locales: [
       { code: 'en', name: 'EN' },
@@ -46,6 +30,7 @@ export default defineNuxtConfig({
       head: {
         htmlAttrs: {
           lang: 'uk',
+          class: 'scroll-smooth',
         },
         meta: [
           { charset: 'UTF-8' },
@@ -64,8 +49,37 @@ export default defineNuxtConfig({
             type: 'image/png',
             href: '/icons/favicon.png',
           },
+          {
+            rel: 'stylesheet', 
+            href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
+          },
         ],
         // script: [],
       },
     },
-})
+    runtimeConfig: {
+      public: {
+        googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+        bootToken: process.env.BOOT_TOKEN,
+        chatId: process.env.CHAT_ID,
+      },
+    },
+    nitro: {
+      compressPublicAssets: true,
+      preset: 'cloudflare-pages',
+      static:  true,
+      publicAssets: [
+        {
+          dir: 'public',
+          maxAge: 60 * 60 * 24 * 365,
+        },
+      ],
+    },
+    vite: {
+      server: {
+        allowedHosts: ['it.starkon.pp.ua', 'localhost', '127.0.0.1'],
+      },
+    },
+    target: 'static',
+    ssr: false,
+});
