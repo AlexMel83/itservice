@@ -165,7 +165,7 @@ const serviceRefs = ref([]);
 
 // Фон секции
 const backgroundStyle = {
-  backgroundImage: `linear-gradient(to bottom, rgba(9, 4, 2, 0.4), rgba(0, 0, 0, 1)), url(https://ucarecdn.com/0bd7b53d-60eb-4db2-815e-e3d4f1d84b7f/-/format/auto/)`,
+  backgroundImage: `linear-gradient(to bottom, rgba(9, 4, 2, 0.4), rgba(0, 0, 0, 1)), url(/img/pexels-buro-millennial.jpg)`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 };

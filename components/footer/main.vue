@@ -39,6 +39,7 @@
           <div class="flex space-x-6 mt-4">
             <NuxtLink
               to="viber://chat?number=%2B380954664190"
+              external
               target="_blank"
               rel="noopener noreferrer"
               class="text-custom-gray hover:text-custom-orange transition-colors"
@@ -46,7 +47,8 @@
               <i class="fab fa-viber text-2xl"></i>
             </NuxtLink>
             <NuxtLink
-              to="https://t.me/+380954664190"
+              to="https://t.me/@itstarkon"
+              external
               target="_blank"
               rel="noopener noreferrer"
               class="text-custom-gray hover:text-custom-orange transition-colors"
@@ -55,6 +57,7 @@
             </NuxtLink>
             <NuxtLink
               to="https://wa.me/380954664190"
+              external
               target="_blank"
               rel="noopener noreferrer"
               class="text-custom-gray hover:text-custom-orange transition-colors"
@@ -62,7 +65,8 @@
               <i class="fab fa-whatsapp text-2xl"></i>
             </NuxtLink>
             <NuxtLink
-              to="https://m.me/380954664190"
+              to="https://m.me/alexandr.meleshko.9"
+              external
               target="_blank"
               rel="noopener noreferrer"
               class="text-custom-gray hover:text-custom-orange transition-colors"

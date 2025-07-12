@@ -15,7 +15,7 @@
           style="--delay: 200ms; --initial-state: 0"
         >
           <img
-            src="https://ucarecdn.com/d7edf35c-4872-4871-a068-5047b93b13ea/-/format/auto/"
+            src="/img/about-team.webp"
             alt="Our development team at work"
             class="rounded-lg border border-custom-border w-full object-cover object-[center_100%]"
           />
