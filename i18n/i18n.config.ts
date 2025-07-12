@@ -13,8 +13,7 @@ export default defineI18nConfig(() => ({
       },
       home: {
         title: 'IT solutions for your business',
-        description:
-          'Professional website development, 360° photography, and virtual tours. Special conditions for veterans and IDPs.',
+        description: ['Professional website development, 360° photography, and virtual tours.','Exclusive offers for regular customers and veterans.'],
         orderButton: 'Order a service',
         services: {
           webDevelopment: {
@@ -321,8 +320,7 @@ export default defineI18nConfig(() => ({
       },
       home: {
         title: 'IT-рішення для вашого бізнесу',
-        description:
-          'Професійна розробка сайтів, 360° зйомка та створення віртуальних турів. Особливі умови для ветеранів та ВПО.',
+        description: ['Професійна розробка сайтів, 360° зйомка та створення віртуальних турів.','Ексклюзивні пропозиції для постійних клієнтів та ветеранів.'],
         orderButton: 'Замовити послугу',
         services: {
           webDevelopment: {

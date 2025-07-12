@@ -1,5 +1,5 @@
 <template>
-  <section id="home" class="min-h-[900px] relative flex items-center pt-[80px]">
+  <section id="home" class="min-h-[900px] relative flex items-center pt-[80px] md:pt-0">
     <div class="absolute inset-0" :style="backgroundStyle"></div>
     <div class="container mx-auto text-center relative z-10 px-4">
       <h1
@@ -9,9 +9,20 @@
       >
         {{ t('home.title') }}
       </h1>
-      <p ref="textRef" class="text-xl mb-8 text-custom-gray animate-fade-in" style="--delay: 200ms; --initial-state: 0">
-        {{ t('home.description') }}
-      </p>
+      <p
+      ref="textRef1"
+      class="text-xl text-custom-gray animate-fade-in"
+      style="--delay: 200ms; --initial-state: 0"
+    >
+      {{ t('home.description[0]') }}
+    </p>
+    <p
+      ref="textRef2"
+      class="text-lg mb-8 text-custom-gray animate-fade-in"
+      style="--delay: 300ms; --initial-state: 0"
+    >
+      {{ t('home.description[1]') }}
+    </p>
       <button
         ref="buttonRef"
         @click="openModal"
@@ -159,7 +170,8 @@ const serviceKeys = Object.keys(services);
 
 // Рефы для элементов
 const titleRef = ref(null);
-const textRef = ref(null);
+const textRef1 = ref(null);
+const textRef2 = ref(null);
 const buttonRef = ref(null);
 const serviceRefs = ref([]);
 
@@ -185,7 +197,8 @@ const setupIntersectionObserver = () => {
   if (alreadyAnimated) {
     // Если уже анимирована, устанавливаем начальное состояние в 1 для всех элементов
     setElementInitialState(titleRef.value, 1);
-    setElementInitialState(textRef.value, 1);
+    setElementInitialState(textRef1.value, 1);
+    setElementInitialState(textRef2.value, 1);
     setElementInitialState(buttonRef.value, 1);
     serviceRefs.value.forEach((ref) => {
       setElementInitialState(ref, 1);
@@ -225,7 +238,8 @@ const setupIntersectionObserver = () => {
 
   // Наблюдаем за всеми элементами
   if (titleRef.value) observer.observe(titleRef.value);
-  if (textRef.value) observer.observe(textRef.value);
+  if (textRef1.value) observer.observe(textRef1.value);
+  if (textRef2.value) observer.observe(textRef2.value);
   if (buttonRef.value) observer.observe(buttonRef.value);
 
   serviceRefs.value.forEach((ref) => {
