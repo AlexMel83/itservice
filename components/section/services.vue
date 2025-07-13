@@ -146,13 +146,13 @@ const animationStore = useAnimationStore();
 const SECTION_ID = 'services-section';
 
 const pricingItems = [
-  { key: 'tech_support', price: 300, features: Array(5).fill('') },
-  { key: 'photo_360', price: 400, monthly: 'per panorama', features: Array(5).fill('') },
-  { key: 'virtual_3d_tours', price: 2000, popular: true, features: Array(5).fill('') },
-  { key: 'business_card_site', price: 1000, monthly: 100, features: Array(5).fill('') },
-  { key: 'wordpress', price: 3000, monthly: 100, popular: true, features: Array(5).fill('') },
-  { key: 'custom_design', price: 10000, monthly: 100, features: Array(5).fill('') },
-  { key: 'full_stack_dev', price: 20000, monthly: 200, popular: true, features: Array(5).fill('') },
+  { key: 'tech_support', price: 500, features: Array(5).fill('') },
+  { key: 'photo_360', price: 500, monthly: 'per panorama', features: Array(5).fill('') },
+  { key: 'virtual_3d_tours', price: 3000, popular: true, features: Array(5).fill('') },
+  { key: 'business_card_site', price: 3000, monthly: 200, features: Array(5).fill('') },
+  { key: 'wordpress', price: 7000, monthly: 200, popular: true, features: Array(5).fill('') },
+  { key: 'custom_design', price: 15000, monthly: 200, features: Array(5).fill('') },
+  { key: 'full_stack_dev', price: 40000, monthly: 400, popular: true, features: Array(5).fill('') },
 ];
 
 const titleRef = ref(null);
