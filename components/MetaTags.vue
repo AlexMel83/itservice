@@ -20,12 +20,14 @@ const props = defineProps({
 const config = useRuntimeConfig();
 const reqUrl = useRequestURL();
 const route = useRoute();
-const baseUrl = (config.public.baseURL || reqUrl.origin || 'https://it.starkon.pp.ua').replace(/\/$/, '');
+const baseUrl = config.public.baseURL || 'https://it.starkon.pp.ua';
 
 // Повна URL-адреса сторінки
 
-const currentUrl = computed(() => props.url || `${baseUrl}${route.path}`);
-
+const currentUrl = computed(() => {
+  const base = 'https://it.starkon.pp.ua';
+  return props.url || `${base}${route.path}`;
+});
 // Повна URL для зображення
 const urlImage = computed(() => {
   const img = props.image || '/img/360-virtual-tour.jpg';
