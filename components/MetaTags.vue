@@ -19,10 +19,13 @@ const props = defineProps({
 // Базова URL (SSR-safe)
 const config = useRuntimeConfig();
 const reqUrl = useRequestURL();
-const baseUrl = reqUrl.origin || config.public.baseURL || 'https://it.starkon.pp.ua';
+const route = useRoute();
+const baseUrl = config.public.baseURL || reqUrl.origin || 'https://it.starkon.pp.ua';
 
 // Повна URL-адреса сторінки
-const currentUrl = computed(() => props.url || baseUrl);
+const currentUrl = computed(() => {
+  return props.url || `${baseUrl}${route.path}`;
+});
 
 // Повна URL для зображення
 const urlImage = computed(() => {
@@ -35,6 +38,7 @@ useHead({
     lang: 'uk-UA',
   },
   title: props.title || 'Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові',
+  link: [{ rel: 'canonical', href: currentUrl.value }],
   meta: [
     // Базові
     { charset: 'utf-8' },
