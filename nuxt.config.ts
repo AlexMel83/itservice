@@ -2,6 +2,7 @@ import { defineNuxtConfig } from 'nuxt/config';
 import 'dotenv/config';
 
 export default defineNuxtConfig({
+  ssr: true,
   compatibilityDate: '2025-02-20',
   devtools: { enabled: true },
   components: true,

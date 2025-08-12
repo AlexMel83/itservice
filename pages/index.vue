@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-screen bg-custom-black font-inter">
     <MetaTags
-      :title="$t('home.title')"
-      :description="$t('home.description[0]') + ' ' + $t('home.description[1]')"
-      :image="'/img/360-virtual-tour.jpg'"
+      title="Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові"
+      description="Інноваційні 3D-тури, 360° зйомка та створення сучасних сайтів у Старокостянтинові. Спеціальні пропозиції для постійних клієнтів і ветеранів"
+      image="/img/360-virtual-tour.jpg"
       :structuredData="{
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
