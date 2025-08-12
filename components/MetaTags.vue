@@ -22,14 +22,12 @@ const reqUrl = useRequestURL();
 const baseUrl = reqUrl.origin || config.public.baseURL || 'https://it.starkon.pp.ua';
 
 // Повна URL-адреса сторінки
-const currentUrl = computed(() => (props.url ? props.url : baseUrl));
+const currentUrl = computed(() => props.url || baseUrl);
 
 // Повна URL для зображення
 const urlImage = computed(() => {
-  if (!props.image) return 'https://it.starkon.pp.ua/img/pexels-buro-millennial.jpg';
-  return props.image.startsWith('http')
-    ? props.image
-    : `${baseUrl}${props.image.startsWith('/') ? '' : '/'}${props.image}`;
+  const img = props.image || '/img/360-virtual-tour.jpg';
+  return img.startsWith('http') ? img : `https://it.starkon.pp.ua${img.startsWith('/') ? '' : '/'}${img}`;
 });
 
 useHead({

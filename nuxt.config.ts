@@ -25,12 +25,20 @@ export default defineNuxtConfig({
       useCookie: false, 
       redirectOn: 'no',
       fallbackLocale: 'uk', 
+      detectBrowserLanguage: {
+        useCookie: false,
+        cookieKey: 'i18n_redirected',
+        redirectOn: 'root', // редірект тільки з /
+        alwaysRedirect: false,
+        fallbackLocale: 'uk', // якщо не знайшли, беремо українську
+      },
     },
     runtimeConfig: {
       public: {
         googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
         bootToken: process.env.BOOT_TOKEN,
         chatId: process.env.CHAT_ID,
+        baseURL: process.env.BASE_URL || 'https://it.starkon.pp.ua',
       },
     },
     nitro: {

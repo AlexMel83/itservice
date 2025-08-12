@@ -1,4 +1,5 @@
 export default defineI18nConfig(() => ({
+  locale: 'uk',
   fallbackLocale: 'uk',
   legacy: false,
   messages: {

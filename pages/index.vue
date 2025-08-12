@@ -3,12 +3,12 @@
     <MetaTags
       :title="$t('home.title')"
       :description="$t('home.description[0]') + ' ' + $t('home.description[1]')"
-      :image="'/img/pexels-buro-millennial.jpg'"
+      :image="'/img/360-virtual-tour.jpg'"
       :structuredData="{
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
         name: 'IT-Starkon',
-        image: 'https://it.starkon.pp.ua/img/pexels-buro-millennial.jpg',
+        image: 'https://it.starkon.pp.ua/img/360-virtual-tour.jpg',
         url: 'https://it.starkon.pp.ua',
         telephone: '+380954664190',
         address: {
