@@ -26,7 +26,7 @@ const currentUrl = computed(() => (props.url ? props.url : baseUrl));
 
 // Повна URL для зображення
 const urlImage = computed(() => {
-  if (!props.image) return 'https://it.starkon.pp.ua/pexels-buro-millennial.jpg';
+  if (!props.image) return 'https://it.starkon.pp.ua/img/pexels-buro-millennial.jpg';
   return props.image.startsWith('http')
     ? props.image
     : `${baseUrl}${props.image.startsWith('/') ? '' : '/'}${props.image}`;
@@ -34,8 +34,7 @@ const urlImage = computed(() => {
 
 useHead({
   htmlAttrs: {
-    lang: 'uk',
-    locale: 'uk',
+    lang: 'uk-UA',
   },
   title: props.title || 'Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові',
   meta: [
@@ -52,12 +51,12 @@ useHead({
     { property: 'og:title', content: props.title },
     { property: 'og:description', content: props.description },
     { property: 'og:image', content: urlImage.value },
-    { property: 'og:image:type', content: 'image/png' },
+    { property: 'og:image:type', content: 'image/jpeg' },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:url', content: currentUrl.value },
-    { property: 'og:locale', content: 'uk' },
-    { property: 'fb:app_id', content: config.public.facebookAppId || '714008411407083' },
+    { property: 'og:locale', content: 'uk_UA' },
+    { property: 'og:locale:alternate', content: 'en_US' },
     // Twitter Cards
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: props.title },
