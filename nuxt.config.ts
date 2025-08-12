@@ -15,20 +15,14 @@ export default defineNuxtConfig({
   ],
   css: ['@/assets/css/style.css'],
   i18n: {
-    locales: [
-      { code: 'en', name: 'EN' },
-      { code: 'uk', name: 'UA' },
-    ],
-    vueI18n: './i18n/i18n.config.ts',
-    defaultLocale: 'uk',
-    strategy: 'prefix_except_default',
-      detectBrowserLanguage: {
-        useCookie: false,
-        cookieKey: 'i18n_redirected',
-        redirectOn: 'root', // редірект тільки з /
-        alwaysRedirect: false,
-        fallbackLocale: 'uk', // якщо не знайшли, беремо українську
-      },
+      locales: [
+        { code: 'en', name: 'EN' },
+        { code: 'uk', name: 'UA' },
+      ],
+      vueI18n: './i18n/i18n.config.ts',
+      defaultLocale: 'uk',
+      strategy: 'prefix_except_default',
+      detectBrowserLanguage: false,
     },
     app: {
       head: {
