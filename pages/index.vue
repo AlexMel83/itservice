@@ -1,5 +1,28 @@
 <template>
   <div class="min-h-screen bg-custom-black font-inter">
+    <MetaTags
+      :title="$t('home.title')"
+      :description="$t('home.description[0]') + ' ' + $t('home.description[1]')"
+      :image="'/pexels-buro-millennial.jpg'"
+      :structuredData="{
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'IT-Starkon',
+        image: 'https://it.starkon.pp.ua/pexels-buro-millennial.jpg',
+        url: 'https://it.starkon.pp.ua',
+        telephone: '+380954664190',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Старокостянтинів',
+          addressCountry: 'UA',
+        },
+        description:
+          'Інноваційні IT-рішення для бізнесу у Старокостянтинові: розробка сайтів, 360° зйомка та створення віртуальних 3D турів. Спеціальні пропозиції для постійних клієнтів і ветеранів.',
+        priceRange: '$$',
+        openingHours: 'Mo-Fr 09:00-18:00',
+        sameAs: ['https://t.me/@itstarkon'],
+      }"
+    />
     <SectionHome />
     <SectionTechnologies />
     <SectionServices />

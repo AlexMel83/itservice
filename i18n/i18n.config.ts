@@ -12,8 +12,11 @@ export default defineI18nConfig(() => ({
         contacts: 'Contacts',
       },
       home: {
-        title: 'IT solutions for your business',
-        description: ['Professional website development, 360° photography, and virtual tours.','Exclusive offers for regular customers and veterans.'],
+        title: 'Virtual 3D Tours and IT Solutions for Business in Starokostiantyniv',
+        description: [
+          'Innovative 3D tours, 360° photography and creation of modern websites in Starokostyantyniv.',
+          'Special offers for regular customers and veterans.',
+        ],
         orderButton: 'Order a service',
         services: {
           webDevelopment: {
@@ -319,8 +322,11 @@ export default defineI18nConfig(() => ({
         contacts: 'Контакти',
       },
       home: {
-        title: 'IT-рішення для вашого бізнесу',
-        description: ['Професійна розробка сайтів, 360° зйомка та створення віртуальних турів.','Ексклюзивні пропозиції для постійних клієнтів та ветеранів.'],
+        title: 'Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові',
+        description: [
+          'Інноваційні 3D-тури, 360° зйомка та створення сучасних сайтів у Старокостянтинові.',
+          'Спеціальні пропозиції для постійних клієнтів і ветеранів.',
+        ],
         orderButton: 'Замовити послугу',
         services: {
           webDevelopment: {

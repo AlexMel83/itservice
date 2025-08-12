@@ -26,37 +26,6 @@ export default defineNuxtConfig({
       redirectOn: 'no',
       fallbackLocale: 'uk', 
     },
-    app: {
-      head: {
-        htmlAttrs: {
-          lang: 'uk',
-          class: 'scroll-smooth',
-        },
-        meta: [
-          { charset: 'UTF-8' },
-          {
-            name: 'viewport',
-            content: 'width=device-width, initial-scale=1',
-          },
-          { name: 'robots', content: 'width=device-width, initial-scale=1' },
-          { property: 'og:locale', content: 'uk_UA' },
-          { property: 'og:type', content: 'article' },
-          { property: 'og:site_name', content: 'IT-Service Starkon' },
-        ],
-        link: [
-          {
-            rel: 'icon',
-            type: 'image/png',
-            href: '/icons/favicon.png',
-          },
-          {
-            rel: 'stylesheet', 
-            href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
-          },
-        ],
-        // script: [],
-      },
-    },
     runtimeConfig: {
       public: {
         googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
