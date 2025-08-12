@@ -20,12 +20,11 @@ const props = defineProps({
 const config = useRuntimeConfig();
 const reqUrl = useRequestURL();
 const route = useRoute();
-const baseUrl = config.public.baseURL || reqUrl.origin || 'https://it.starkon.pp.ua';
+const baseUrl = (config.public.baseURL || reqUrl.origin || 'https://it.starkon.pp.ua').replace(/\/$/, '');
 
 // Повна URL-адреса сторінки
-const currentUrl = computed(() => {
-  return props.url || `${baseUrl}${route.path}`;
-});
+
+const currentUrl = computed(() => props.url || `${baseUrl}${route.path}`);
 
 // Повна URL для зображення
 const urlImage = computed(() => {
@@ -59,7 +58,6 @@ useHead({
     { property: 'og:image:alt', content: 'Віртуальний 3D тур для бізнесу в Старокостянтинові' },
     { property: 'og:url', content: currentUrl.value },
     { property: 'og:locale', content: 'uk_UA' },
-    { property: 'og:locale:alternate', content: 'en_US' },
     { property: 'fb:app_id', content: config.public.facebookAppId || '714008411407083' },
     // Twitter Cards
     { name: 'twitter:card', content: 'summary_large_image' },
