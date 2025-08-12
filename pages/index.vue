@@ -3,12 +3,12 @@
     <MetaTags
       title="Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові"
       description="Інноваційні 3D-тури, 360° зйомка та створення сучасних сайтів у Старокостянтинові. Спеціальні пропозиції для постійних клієнтів і ветеранів"
-      image="/img/360-virtual-tour.jpg"
+      image="/img/360-virtual-tour-v2.jpg"
       :structuredData="{
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
         name: 'IT-Starkon',
-        image: 'https://it.starkon.pp.ua/img/360-virtual-tour.jpg',
+        image: 'https://it.starkon.pp.ua/img/360-virtual-tour-v2.jpg',
         url: 'https://it.starkon.pp.ua',
         telephone: '+380954664190',
         address: {

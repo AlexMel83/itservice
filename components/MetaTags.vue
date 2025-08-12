@@ -28,7 +28,7 @@ const currentUrl = computed(() => {
 });
 // Повна URL для зображення
 const urlImage = computed(() => {
-  const img = props.image || '/img/360-virtual-tour.jpg';
+  const img = props.image || '/img/360-virtual-tour-v2.jpg';
   return img.startsWith('http') ? img : `https://it.starkon.pp.ua${img.startsWith('/') ? '' : '/'}${img}`;
 });
 
