@@ -18,15 +18,13 @@ const props = defineProps({
 
 // Базова URL (SSR-safe)
 const config = useRuntimeConfig();
-const reqUrl = useRequestURL();
 const route = useRoute();
 const baseUrl = config.public.baseURL || 'https://it.starkon.pp.ua';
 
 // Повна URL-адреса сторінки
 
 const currentUrl = computed(() => {
-  const base = 'https://it.starkon.pp.ua';
-  return props.url || `${base}${route.path}`;
+  return props.url || `${baseUrl}${route.path}`;
 });
 // Повна URL для зображення
 const urlImage = computed(() => {
@@ -49,10 +47,10 @@ useHead({
     { name: 'keywords', content: props.keywords },
     { name: 'author', content: 'Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові' },
     // OpenGraph для Facebook та LinkedIn
-    { property: 'og:type', content: 'article' },
-    { property: 'og:site_name', content: 'Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові' },
     { property: 'og:title', content: props.title },
     { property: 'og:description', content: props.description },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:site_name', content: 'Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові' },
     { property: 'og:image', content: urlImage.value },
     { property: 'og:image:type', content: 'image/jpeg' },
     { property: 'og:image:width', content: '1200' },
