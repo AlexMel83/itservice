@@ -52,9 +52,11 @@ useHead({
     { property: 'og:image:type', content: 'image/jpeg' },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
+    { property: 'og:image:alt', content: 'Віртуальний 3D тур для бізнесу в Старокостянтинові' },
     { property: 'og:url', content: currentUrl.value },
     { property: 'og:locale', content: 'uk_UA' },
     { property: 'og:locale:alternate', content: 'en_US' },
+    { property: 'fb:app_id', content: config.public.facebookAppId || '714008411407083' },
     // Twitter Cards
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: props.title },
