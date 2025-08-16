@@ -1,1 +1,4 @@
 
+User-agent: *
+Allow: /
+Sitemap: https://it.starkon.pp.ua/sitemap.xml
