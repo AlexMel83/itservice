@@ -33,6 +33,20 @@ export default defineNuxtConfig({
             href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
           },
         ],
+        script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-0L0ZVLVDK4',
+          async: true,
+        },
+        {
+          innerHTML: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-SFWPTFCSK7');
+          `,
+        },
+      ],
       },
     },
     runtimeConfig: {
