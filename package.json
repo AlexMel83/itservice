@@ -15,6 +15,7 @@
     "precommit": "eslint --fix \"./**/*.{js,ts,vue}\" && prettier --write \"./**/*.{js,ts,vue,css,scss}\""
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.10",
     "@nuxt/image": "^1.9.0",
     "@nuxt/ui": "^2.21.0",
     "@nuxtjs/color-mode": "^3.5.2",

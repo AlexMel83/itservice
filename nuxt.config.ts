@@ -77,6 +77,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
       public: {
         googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+        googleMapsApiKeyStatic: process.env.GOOGLE_MAPS_API_KEY_STATIC,
         bootToken: process.env.BOOT_TOKEN,
         chatId: process.env.CHAT_ID,
         baseURL: process.env.BASE_URL || 'https://it.starkon.pp.ua',
