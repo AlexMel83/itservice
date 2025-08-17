@@ -39,7 +39,7 @@
           </div>
           <ul class="space-y-3 mb-8 text-custom-gray">
             <li v-for="(feature, i) in price.features" :key="i" class="flex items-center">
-              <i class="fas fa-check text-custom-orange mr-2"></i>
+              <font-awesome-icon :icon="['fas', 'check']" class="text-custom-orange mr-2" />
               <span>{{ t(`services.items.${price.key}.features.${i}`) }}</span>
             </li>
           </ul>
@@ -61,9 +61,13 @@
       class="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
     >
       <div class="modal-content bg-[#1C1C1C] p-8 rounded-lg w-96 relative">
-        <!-- Крестик закрытия -->
-        <button aria-label="закрити" @click="closeModal" class="absolute top-4 right-4 text-custom-white text-2xl">
-          &times;
+        <!-- Кнопка закриття -->
+        <button
+          aria-label="закрити"
+          @click="closeModal"
+          class="absolute top-4 right-4 text-custom-white text-2xl hover:text-custom-orange"
+        >
+          <font-awesome-icon :icon="['fas', 'times']" />
         </button>
 
         <!-- Заголовок модалки -->
@@ -71,7 +75,7 @@
           {{ t('services.modal.title') }} {{ selectedService ? t(`services.items.${selectedService.key}.title`) : '' }}
         </h3>
 
-        <form v-if="!isSuccess" @submit.prevent="validateForm" class="pace-y-4">
+        <form v-if="!isSuccess" @submit.prevent="validateForm" class="space-y-4">
           <!-- Ім'я -->
           <div class="flex flex-col">
             <label for="name" class="text-[#A39F9D] font-medium mb-2">{{ t('services.modal.name') }}</label>
@@ -142,7 +146,13 @@
 import { ref, onMounted, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAnimationStore } from '~/stores/animation';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import * as yup from 'yup';
+
+// Додаємо лише потрібні іконки до бібліотеки
+library.add(faCheck, faTimes);
 
 const { t } = useI18n();
 
@@ -260,7 +270,7 @@ const submitForm = async () => {
 
     isSuccess.value = true;
   } catch (error) {
-    console.error('Ошибка при отправке', error);
+    console.error('Помилка при відправці', error);
     formError.value = true;
   }
 };
@@ -288,7 +298,7 @@ const validateForm = async () => {
   try {
     await validationSchema.validate(orderForm.value, { abortEarly: false });
     errors.value = {};
-    submitForm(); // твоя логіка відправки форми
+    submitForm(); // Логіка відправки форми
   } catch (err) {
     errors.value = err.inner.reduce((acc, error) => {
       acc[error.path] = error.message;

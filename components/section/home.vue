@@ -48,7 +48,7 @@
           target="_blank"
           :style="`--delay: ${600 + index * 200}ms; --initial-state: 0;`"
         >
-          <i :class="[services[service].icon, 'text-custom-orange text-3xl mb-4']"></i>
+          <font-awesome-icon :icon="['fas', services[service].icon]" class="text-custom-orange text-3xl mb-4" />
           <h2 class="text-custom-white text-xl mb-2">
             {{ t(`home.services.${service}.title`) }}
           </h2>
@@ -71,9 +71,8 @@
       >
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-xl font-space-grotesk text-[#F5F5F5]">{{ modalTitle }}</h2>
-          <button aria-label="закрити">
-            @click="closeModal" class="text-[#A39F9D] hover:text-[#FF5500]">
-            <i class="fas fa-times"></i>
+          <button aria-label="закрити" @click="closeModal" class="text-[#A39F9D] hover:text-[#FF5500]">
+            <font-awesome-icon :icon="['fas', 'times']" />
           </button>
         </div>
         <form v-if="!isFormSubmitted" @submit.prevent="submitForm" class="space-y-4">
@@ -162,49 +161,55 @@
 import { ref, onMounted, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAnimationStore } from '~/stores/animation';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faCode, faCamera, faVrCardboard, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+// Додаємо лише потрібні іконки до бібліотеки
+library.add(faCode, faCamera, faVrCardboard, faTimes);
 
 const { t } = useI18n();
 const animationStore = useAnimationStore();
 
-// ID секции для хранения в Pinia
+// ID секції для зберігання в Pinia
 const SECTION_ID = 'home-section';
 
-// Доступные услуги
+// Доступні послуги
 const services = {
-  webDevelopment: { icon: 'fas fa-code' },
-  photo360: { icon: 'fas fa-camera' },
-  virtualTours: { icon: 'fas fa-vr-cardboard' },
+  webDevelopment: { icon: 'code' },
+  photo360: { icon: 'camera' },
+  virtualTours: { icon: 'vr-cardboard' },
 };
 const serviceKeys = Object.keys(services);
 
-// Рефы для элементов
+// Реф для елементів
 const titleRef = ref(null);
 const textRef1 = ref(null);
 const textRef2 = ref(null);
 const buttonRef = ref(null);
 const serviceRefs = ref([]);
 
-// Фон секции
+// Фон секції
 const backgroundStyle = {
   backgroundImage: `linear-gradient(to bottom, rgba(9, 4, 2, 0.4), rgba(0, 0, 0, 1)), url(/img/pexels-buro-millennial.jpg)`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 };
 
-// Установка CSS переменной --initial-state для анимированных элементов
+// Установка CSS змінної --initial-state для анімованих елементів
 const setElementInitialState = (el, value) => {
   if (el) {
     el.style.setProperty('--initial-state', value);
   }
 };
 
-// Создаем и настраиваем Intersection Observer
+// Створюємо і налаштовуємо Intersection Observer
 const setupIntersectionObserver = () => {
-  // Проверяем, была ли секция уже анимирована через Pinia
+  // Перевіряємо, чи була секція вже анімована через Pinia
   const alreadyAnimated = animationStore.isSectionAnimated(SECTION_ID);
 
   if (alreadyAnimated) {
-    // Если уже анимирована, устанавливаем начальное состояние в 1 для всех элементов
+    // Якщо вже анімована, встановлюємо початковий стан у 1 для всіх елементів
     setElementInitialState(titleRef.value, 1);
     setElementInitialState(textRef1.value, 1);
     setElementInitialState(textRef2.value, 1);
@@ -212,12 +217,12 @@ const setupIntersectionObserver = () => {
     serviceRefs.value.forEach((ref) => {
       setElementInitialState(ref, 1);
     });
-    return null; // Не создаем observer
+    return null; // Не створюємо observer
   }
 
   const options = {
     root: null,
-    rootMargin: '0px 0px -20% 0px', // Триггер когда элемент выше нижней 1/5 экрана
+    rootMargin: '0px 0px -20% 0px', // Тригер, коли елемент вище нижньої 1/5 екрана
     threshold: 0.1,
   };
 
@@ -228,24 +233,24 @@ const setupIntersectionObserver = () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         hasIntersectingElements = true;
-        // Устанавливаем CSS переменную для запуска анимации
+        // Встановлюємо CSS змінну для запуску анімації
         setElementInitialState(entry.target, 1);
 
-        // Отключаем наблюдение за элементом после его появления
+        // Відключаємо спостереження за елементом після його появи
         observer.unobserve(entry.target);
       } else {
         allVisible = false;
       }
     });
 
-    // Если все наблюдаемые элементы стали видимыми или хотя бы один стал видимым и больше нет наблюдаемых элементов
+    // Якщо всі спостерігаючі елементи стали видимими або хоча б один став видимим і більше немає елементів
     if ((allVisible && hasIntersectingElements) || document.querySelectorAll('.animate-fade-in').length === 0) {
-      // Сохраняем состояние в Pinia
+      // Зберігаємо стан у Pinia
       animationStore.setSectionAnimated(SECTION_ID);
     }
   }, options);
 
-  // Наблюдаем за всеми элементами
+  // Спостерігаємо за всіма елементами
   if (titleRef.value) observer.observe(titleRef.value);
   if (textRef1.value) observer.observe(textRef1.value);
   if (textRef2.value) observer.observe(textRef2.value);
@@ -261,11 +266,11 @@ const setupIntersectionObserver = () => {
 let observer = null;
 
 onMounted(() => {
-  // Дожидаемся следующего тика рендеринга, чтобы рефы были доступны
+  // Чекаємо наступного тика рендерингу, щоб рефи були доступні
   nextTick(() => {
     observer = setupIntersectionObserver();
 
-    // Обработчик для навигации (если вы используете router)
+    // Обробник для навігації (якщо використовується router)
     window.addEventListener('popstate', () => {
       if (observer) {
         observer.disconnect();
@@ -307,12 +312,12 @@ const openModal = () => (isModalOpen.value = true);
 const closeModal = () => {
   isModalOpen.value = false;
   isFormSubmitted.value = false;
-  form.value = { name: '', email: '', phone: '', service: '', message: '' }; // Очистка формы
+  form.value = { name: '', email: '', phone: '', service: '', message: '' }; // Очистка форми
 };
 
 async function submitForm() {
   isFormTouched.value = true;
-  if (!isFormValid.value) return; // Если форма не валидна, не отправляем
+  if (!isFormValid.value) return; // Якщо форма не валідна, не відправляємо
 
   try {
     const response = await fetch('/api/telegram', {
@@ -330,13 +335,13 @@ async function submitForm() {
 
     const result = await response.json();
     if (result.ok) {
-      isFormSubmitted.value = true; // Успешная отправка
+      isFormSubmitted.value = true; // Успішна відправка
     } else {
-      console.error('Ошибка:', result);
+      console.error('Помилка:', result);
       alert(t('home.form.errorMessage'));
     }
   } catch (error) {
-    console.error('Ошибка:', error);
+    console.error('Помилка:', error);
     alert(t('home.form.errorMessage'));
   }
 }

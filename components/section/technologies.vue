@@ -21,7 +21,7 @@
               class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <i :class="[tech.icon, 'text-4xl text-custom-orange mr-4']"></i>
+                <font-awesome-icon :icon="[tech.iconType, tech.icon]" class="text-4xl text-custom-orange mr-4" />
                 <h4 class="text-custom-white">{{ $t(`technologies.frontend.${tech.key}.name`) }}</h4>
               </div>
               <p class="text-custom-gray">
@@ -44,7 +44,7 @@
               class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <i :class="[tech.icon, 'text-4xl text-custom-orange mr-4']"></i>
+                <font-awesome-icon :icon="[tech.iconType, tech.icon]" class="text-4xl text-custom-orange mr-4" />
                 <h4 class="text-custom-white">{{ $t(`technologies.backend.${tech.key}.name`) }}</h4>
               </div>
               <p class="text-custom-gray">
@@ -67,7 +67,7 @@
               class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <i :class="[tech.icon, 'text-4xl text-custom-orange mr-4']"></i>
+                <font-awesome-icon :icon="[tech.iconType, tech.icon]" class="text-4xl text-custom-orange mr-4" />
                 <h4 class="text-custom-white">{{ $t(`technologies.cloud.${tech.key}.name`) }}</h4>
               </div>
               <p class="text-custom-gray">
@@ -90,7 +90,7 @@
               class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <i :class="[tech.icon, 'text-4xl text-custom-orange mr-4']"></i>
+                <font-awesome-icon :icon="[tech.iconType, tech.icon]" class="text-4xl text-custom-orange mr-4" />
                 <h4 class="text-custom-white">{{ $t(`technologies.tools.${tech.key}.name`) }}</h4>
               </div>
               <p class="text-custom-gray">
@@ -107,43 +107,43 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
-// Данные технологий — только структура и ключи
+// Дані технологій — структура з типом іконки
 const frontendTechs = [
-  { key: 'react_next', icon: 'fab fa-react' },
-  { key: 'vue_nuxt', icon: 'fab fa-vuejs' },
-  { key: 'pwa', icon: 'fas fa-mobile-alt' },
-  { key: 'tailwindcss', icon: 'fab fa-css3' },
-  { key: 'typescript', icon: 'fas fa-code' },
-  { key: 'leaflet', icon: 'fas fa-map-marked-alt' },
+  { key: 'react_next', icon: 'react', iconType: 'fab' },
+  { key: 'vue_nuxt', icon: 'vuejs', iconType: 'fab' },
+  { key: 'pwa', icon: 'mobile-alt', iconType: 'fas' },
+  { key: 'tailwindcss', icon: 'css3', iconType: 'fab' },
+  { key: 'typescript', icon: 'code', iconType: 'fas' },
+  { key: 'leaflet', icon: 'map-marked-alt', iconType: 'fas' },
 ];
 
 const backendTechs = [
-  { key: 'nodejs', icon: 'fab fa-node-js' },
-  { key: 'nestjs', icon: 'fas fa-server' },
-  { key: 'postgresql', icon: 'fas fa-database' },
-  { key: 'mysql', icon: 'fas fa-database' },
-  { key: 'swagger', icon: 'fas fa-file-code' },
-  { key: 'docker', icon: 'fab fa-docker' },
+  { key: 'nodejs', icon: 'node-js', iconType: 'fab' },
+  { key: 'nestjs', icon: 'server', iconType: 'fas' },
+  { key: 'postgresql', icon: 'database', iconType: 'fas' },
+  { key: 'mysql', icon: 'database', iconType: 'fas' },
+  { key: 'swagger', icon: 'file-code', iconType: 'fas' },
+  { key: 'docker', icon: 'docker', iconType: 'fab' },
 ];
 
 const cloudTechs = [
-  { key: 'aws', icon: 'fab fa-aws' },
-  { key: 'azure', icon: 'fab fa-microsoft' },
-  { key: 'google_cloud', icon: 'fab fa-google' },
-  { key: 'oracle_cloud', icon: 'fas fa-cloud' },
-  { key: 'cloudflare', icon: 'fas fa-shield-alt' },
+  { key: 'aws', icon: 'aws', iconType: 'fab' },
+  { key: 'azure', icon: 'microsoft', iconType: 'fab' },
+  { key: 'google_cloud', icon: 'google', iconType: 'fab' },
+  { key: 'oracle_cloud', icon: 'cloud', iconType: 'fas' },
+  { key: 'cloudflare', icon: 'shield-alt', iconType: 'fas' },
 ];
 
 const toolsTechs = [
-  { key: 'wordpress', icon: 'fab fa-wordpress' },
-  { key: 'git', icon: 'fab fa-git-alt' },
-  { key: 'figma', icon: 'fas fa-pencil-ruler' },
-  { key: 'liqpay', icon: 'fas fa-credit-card' },
-  { key: 'oauth2', icon: 'fas fa-lock' },
-  { key: 'eslint_prettier', icon: 'fas fa-code' },
+  { key: 'wordpress', icon: 'wordpress', iconType: 'fab' },
+  { key: 'git', icon: 'git-alt', iconType: 'fab' },
+  { key: 'figma', icon: 'pencil-ruler', iconType: 'fas' },
+  { key: 'liqpay', icon: 'credit-card', iconType: 'fas' },
+  { key: 'oauth2', icon: 'lock', iconType: 'fas' },
+  { key: 'eslint_prettier', icon: 'code', iconType: 'fas' },
 ];
 
-// Refs для отслеживания элементов
+// Refs для відстеження елементів
 const titleRef = ref(null);
 const frontendRef = ref(null);
 const backendRef = ref(null);
@@ -151,7 +151,7 @@ const cloudRef = ref(null);
 const toolsRef = ref(null);
 const techRefs = ref([]);
 
-// Настройка IntersectionObserver
+// Налаштування IntersectionObserver
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {

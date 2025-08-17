@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-02-20',
   devtools: { enabled: true },
   components: true,
+  plugins: ['~/plugins/font-awesome.js'],
   modules: [
     '@nuxt/ui',
     '@nuxtjs/sitemap',
@@ -48,10 +49,6 @@ export default defineNuxtConfig({
     app: {
       head: {
         link: [
-          {
-            rel: 'stylesheet', 
-            href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
-          },
           { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
           { rel: 'preconnect', href: 'https://cdnjs.cloudflare.com', crossorigin: '' },
           { rel: 'preconnect', href: 'https://www.googletagmanager.com', crossorigin: '' },

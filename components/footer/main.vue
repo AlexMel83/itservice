@@ -1,4 +1,3 @@
-<!-- components/footer/main.vue -->
 <template>
   <footer id="contacts" class="bg-custom-black text-custom-white py-8 border-t border-custom-border relative">
     <div class="container mx-auto px-4">
@@ -14,9 +13,9 @@
             target="_blank"
             rel="noopener noreferrer"
             class="text-custom-gray flex items-center"
-            aria-label="adress"
+            aria-label="address"
           >
-            <i class="fas fa-map-marker-alt mr-2 text-custom-orange"></i>
+            <font-awesome-icon :icon="['fas', 'map-marker-alt']" class="mr-2 text-custom-orange" />
             {{ $t('footer.address') }}
           </NuxtLink>
           <NuxtLink
@@ -26,7 +25,7 @@
             class="text-custom-gray flex items-center"
             aria-label="phone"
           >
-            <i class="fas fa-phone mr-2 text-custom-orange"></i>
+            <font-awesome-icon :icon="['fas', 'phone']" class="mr-2 text-custom-orange" />
             +38 (095) 466-41-90
           </NuxtLink>
           <NuxtLink
@@ -36,7 +35,7 @@
             class="text-custom-gray flex items-center"
             aria-label="email"
           >
-            <i class="fas fa-envelope mr-2 text-custom-orange"></i>
+            <font-awesome-icon :icon="['fas', 'envelope']" class="mr-2 text-custom-orange" />
             it@starkon.pp.ua
           </NuxtLink>
           <div class="flex space-x-6 mt-4">
@@ -48,7 +47,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="viber"
             >
-              <i class="fab fa-viber text-2xl"></i>
+              <font-awesome-icon :icon="['fab', 'viber']" class="text-2xl" />
             </NuxtLink>
             <NuxtLink
               to="https://t.me/@itstarkon"
@@ -58,7 +57,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="telegram"
             >
-              <i class="fab fa-telegram text-2xl"></i>
+              <font-awesome-icon :icon="['fab', 'telegram']" class="text-2xl" />
             </NuxtLink>
             <NuxtLink
               to="https://wa.me/380954664190"
@@ -68,7 +67,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="whatsapp"
             >
-              <i class="fab fa-whatsapp text-2xl"></i>
+              <font-awesome-icon :icon="['fab', 'whatsapp']" class="text-2xl" />
             </NuxtLink>
             <NuxtLink
               to="https://m.me/alexandr.meleshko.9"
@@ -78,7 +77,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="messenger"
             >
-              <i class="fab fa-facebook-messenger text-2xl"></i>
+              <font-awesome-icon :icon="['fab', 'facebook-messenger']" class="text-2xl" />
             </NuxtLink>
           </div>
         </div>
@@ -98,18 +97,26 @@
         class="fixed bottom-6 right-6 bg-custom-orange text-custom-white p-3 w-12 h-12 rounded-full shadow-lg hover:bg-custom-border hover:scale-105 transition-all duration-300 z-50"
         title="Наверх"
       >
-        <i class="fas fa-angle-double-up"></i>
+        <font-awesome-icon :icon="['fas', 'angle-double-up']" />
       </button>
     </div>
   </footer>
 </template>
 
 <script setup>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faMapMarkerAlt, faPhone, faEnvelope, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
+import { faViber, faTelegram, faWhatsapp, faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+// Додаємо лише потрібні іконки до бібліотеки
+library.add(faMapMarkerAlt, faPhone, faEnvelope, faAngleDoubleUp, faViber, faTelegram, faWhatsapp, faFacebookMessenger);
+
 const GoogleMap = defineAsyncComponent(() => import('@/components/GoogleMap.vue'));
 // Состояние видимости кнопки "Наверх"
 const showScrollTop = ref(false);
 
-// Функция для скроллинга наверх
+// Функція для скролінгу наверх
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
@@ -117,13 +124,13 @@ const scrollToTop = () => {
   });
 };
 
-// Проверка положения прокрутки
+// Перевірка положення прокрутки
 const handleScroll = () => {
-  showScrollTop.value = window.scrollY > 100; // Показываем кнопку после прокрутки на 100px
+  showScrollTop.value = window.scrollY > 100; // Показуємо кнопку після прокрутки на 100px
 };
 
 onMounted(() => {
-  // Добавление слушателя прокрутки
+  // Додавання слухача прокрутки
   window.addEventListener('scroll', handleScroll);
 });
 

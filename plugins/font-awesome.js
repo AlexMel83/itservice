@@ -1,0 +1,81 @@
+import { defineNuxtPlugin } from '#app';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faCheck,
+  faTimes,
+  faCode,
+  faCamera,
+  faVrCardboard,
+  faMapMarkerAlt,
+  faPhone,
+  faEnvelope,
+  faAngleDoubleUp,
+  faMobileAlt,
+  faServer,
+  faDatabase,
+  faFileCode,
+  faCloud,
+  faShieldAlt,
+  faPencilRuler,
+  faCreditCard,
+  faLock,
+  faMapMarkedAlt,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faViber,
+  faTelegram,
+  faWhatsapp,
+  faFacebookMessenger,
+  faReact,
+  faVuejs,
+  faCss3,
+  faNodeJs,
+  faDocker,
+  faAws,
+  faMicrosoft,
+  faGoogle,
+  faWordpress,
+  faGitAlt,
+} from '@fortawesome/free-brands-svg-icons';
+
+// Додаємо всі іконки, використані в проєкті
+library.add(
+  faCheck,
+  faTimes,
+  faCode,
+  faCamera,
+  faVrCardboard,
+  faMapMarkerAlt,
+  faPhone,
+  faEnvelope,
+  faAngleDoubleUp,
+  faMobileAlt,
+  faServer,
+  faDatabase,
+  faFileCode,
+  faCloud,
+  faShieldAlt,
+  faPencilRuler,
+  faCreditCard,
+  faLock,
+  faMapMarkedAlt,
+  faViber,
+  faTelegram,
+  faWhatsapp,
+  faFacebookMessenger,
+  faReact,
+  faVuejs,
+  faCss3,
+  faNodeJs,
+  faDocker,
+  faAws,
+  faMicrosoft,
+  faGoogle,
+  faWordpress,
+  faGitAlt,
+);
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.component('font-awesome-icon', FontAwesomeIcon);
+});
