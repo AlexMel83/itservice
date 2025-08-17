@@ -2,8 +2,9 @@
   <section id="home" class="min-h-[900px] relative flex items-center pt-[80px] md:pt-0">
     <NuxtImg
       src="/img/pexels-buro-millennial.jpg"
-      alt="Background preload"
+      alt="Background"
       fetchpriority="high"
+      loading="lazy"
       style="display: none"
       width="1920"
       height="1080"

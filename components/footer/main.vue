@@ -105,6 +105,7 @@
 </template>
 
 <script setup>
+const GoogleMap = defineAsyncComponent(() => import('@/components/GoogleMap.vue'));
 // Состояние видимости кнопки "Наверх"
 const showScrollTop = ref(false);
 

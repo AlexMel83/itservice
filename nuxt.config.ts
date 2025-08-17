@@ -43,12 +43,9 @@ export default defineNuxtConfig({
             rel: 'stylesheet', 
             href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
           },
-          {
-            rel: 'preload',
-            href: '/img/pexels-buro-millennial.jpg',
-            as: 'image',
-          },
         ],
+      },
+      body: {
         script: [
         {
           src: 'https://www.googletagmanager.com/gtag/js?id=G-0L0ZVLVDK4',
@@ -64,7 +61,7 @@ export default defineNuxtConfig({
           defer: true,
         },
       ],
-      },
+      }
     },
     runtimeConfig: {
       public: {
@@ -90,6 +87,4 @@ export default defineNuxtConfig({
         allowedHosts: ['it.starkon.pp.ua', 'localhost', '127.0.0.1'],
       },
     },
-    // target: 'static',
-    // ssr: false,
 });
