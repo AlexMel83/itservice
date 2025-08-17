@@ -32,7 +32,7 @@ export default defineNuxtConfig({
         { code: 'en', name: 'EN' },
         { code: 'uk', name: 'UA' },
       ],
-      vueI18n: './i18n/i18n.config.ts',
+      vueI18n: 'i18n.config.ts',
       defaultLocale: 'uk',
       strategy: 'prefix_except_default',
       detectBrowserLanguage: false,
