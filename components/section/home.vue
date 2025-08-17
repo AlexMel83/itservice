@@ -1,5 +1,13 @@
 <template>
   <section id="home" class="min-h-[900px] relative flex items-center pt-[80px] md:pt-0">
+    <NuxtImg
+      src="/img/pexels-buro-millennial.jpg"
+      alt="Background preload"
+      fetchpriority="high"
+      style="display: none"
+      width="1920"
+      height="1080"
+    />
     <div class="absolute inset-0" :style="backgroundStyle"></div>
     <div class="container mx-auto text-center relative z-10 px-4">
       <h1
@@ -9,20 +17,16 @@
       >
         {{ t('home.title') }}
       </h1>
+      <p ref="textRef1" class="text-xl text-custom-gray animate-fade-in" style="--delay: 200ms; --initial-state: 0">
+        {{ t('home.description[0]') }}
+      </p>
       <p
-      ref="textRef1"
-      class="text-xl text-custom-gray animate-fade-in"
-      style="--delay: 200ms; --initial-state: 0"
-    >
-      {{ t('home.description[0]') }}
-    </p>
-    <p
-      ref="textRef2"
-      class="text-lg mb-8 text-custom-gray animate-fade-in"
-      style="--delay: 300ms; --initial-state: 0"
-    >
-      {{ t('home.description[1]') }}
-    </p>
+        ref="textRef2"
+        class="text-lg mb-8 text-custom-gray animate-fade-in"
+        style="--delay: 300ms; --initial-state: 0"
+      >
+        {{ t('home.description[1]') }}
+      </p>
       <button
         ref="buttonRef"
         @click="openModal"

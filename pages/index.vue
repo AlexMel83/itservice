@@ -21,6 +21,32 @@
         priceRange: '$$',
         openingHours: 'Mo-Fr 09:00-18:00',
         sameAs: ['https://t.me/@itstarkon'],
+        makesOffer: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Product',
+              name: 'Віртуальний 3D тур',
+              description: 'Створення професійного віртуального 3D туру з інтеграцією у ваш сайт або Google Maps.',
+              image: 'https://it.starkon.pp.ua/img/360-virtual-tour-v2.jpg',
+            },
+            price: '200',
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Product',
+              name: 'Розробка корпоративного сайту',
+              description: 'Сучасний сайт для вашого бізнесу з SEO-оптимізацією та мобільною адаптивністю.',
+              image: 'https://it.starkon.pp.ua/img/pexels-buro-millennial.jpg',
+            },
+            price: '500',
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
+        ],
       }"
     />
     <SectionHome />

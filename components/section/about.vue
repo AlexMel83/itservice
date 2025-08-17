@@ -14,9 +14,10 @@
           class="md:w-1/2 flex h-[400px] animate-fade-in"
           style="--delay: 200ms; --initial-state: 0"
         >
-          <img
+          <NuxtImg
             src="/img/about-team.webp"
             alt="Our development team at work"
+            loading="lazy"
             class="rounded-lg border border-custom-border w-full object-cover object-[center_100%]"
           />
         </div>

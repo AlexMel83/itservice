@@ -21,6 +21,11 @@ export default defineNuxtConfig({
     sitemap: 'https://it.starkon.pp.ua/sitemap.xml',
   },
   css: ['@/assets/css/style.css'],
+  tailwindcss: {
+    config: {
+      purge: ['./pages/**/*.{vue,js}', './components/**/*.{vue,js}'],
+    },
+  },
   i18n: {
       locales: [
         { code: 'en', name: 'EN' },
@@ -38,6 +43,11 @@ export default defineNuxtConfig({
             rel: 'stylesheet', 
             href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
           },
+          {
+            rel: 'preload',
+            href: '/img/pexels-buro-millennial.jpg',
+            as: 'image',
+          },
         ],
         script: [
         {
@@ -51,6 +61,7 @@ export default defineNuxtConfig({
             gtag('js', new Date());
             gtag('config', 'G-0L0ZVLVDK4');
           `,
+          defer: true,
         },
       ],
       },
