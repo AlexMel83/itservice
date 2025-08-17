@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config';
 import 'dotenv/config';
+import type { content } from '#tailwind-config';
 
 export default defineNuxtConfig({
   ssr: true,
@@ -23,7 +24,7 @@ export default defineNuxtConfig({
   css: ['@/assets/css/style.css'],
   tailwindcss: {
     config: {
-      purge: ['./pages/**/*.{vue,js}', './components/**/*.{vue,js}'],
+      content: ['./pages/**/*.{vue,js}', './components/**/*.{vue,js}'],
     },
   },
   i18n: {
@@ -44,24 +45,22 @@ export default defineNuxtConfig({
             href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
           },
         ],
-      },
-      body: {
         script: [
-        {
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-0L0ZVLVDK4',
-          async: true,
-        },
-        {
-          innerHTML: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-0L0ZVLVDK4');
-          `,
-          defer: true,
-        },
-      ],
-      }
+          {
+            src: 'https://www.googletagmanager.com/gtag/js?id=G-0L0ZVLVDK4',
+            async: true,
+          },
+          {
+            innerHTML: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0L0ZVLVDK4');
+            `,
+            defer: true,
+          },
+        ],
+      },
     },
     runtimeConfig: {
       public: {

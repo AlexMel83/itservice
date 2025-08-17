@@ -11,9 +11,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "start": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "precommit": "eslint --fix \"./**/*.{js,ts,vue}\" && prettier --write \"./**/*.{js,ts,vue,css,scss}\"",
-    "prepare": "husky install"
+    "postinstall": "nuxt prepare && husky install",
+    "precommit": "eslint --fix \"./**/*.{js,ts,vue}\" && prettier --write \"./**/*.{js,ts,vue,css,scss}\""
   },
   "dependencies": {
     "@nuxt/image": "^1.9.0",
