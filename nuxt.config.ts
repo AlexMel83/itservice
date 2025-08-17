@@ -20,9 +20,6 @@ export default defineNuxtConfig({
     allow: '/',
     sitemap: 'https://it.starkon.pp.ua/sitemap.xml',
   },
-  sitemap: {
-    sources: ['server/api/urls.ts'],
-  },
   css: ['@/assets/css/style.css'],
   i18n: {
       locales: [
