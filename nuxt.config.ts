@@ -8,12 +8,21 @@ export default defineNuxtConfig({
   components: true,
   modules: [
     '@nuxt/ui',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@pinia/nuxt',
   ],
+  robots: {
+    allow: '/',
+    sitemap: 'https://it.starkon.pp.ua/sitemap.xml',
+  },
+  sitemap: {
+    sources: ['server/api/urls.ts'],
+  },
   css: ['@/assets/css/style.css'],
   i18n: {
       locales: [
