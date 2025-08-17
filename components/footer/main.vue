@@ -104,14 +104,6 @@
 </template>
 
 <script setup>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faMapMarkerAlt, faPhone, faEnvelope, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
-import { faViber, faTelegram, faWhatsapp, faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
-
-// Додаємо лише потрібні іконки до бібліотеки
-library.add(faMapMarkerAlt, faPhone, faEnvelope, faAngleDoubleUp, faViber, faTelegram, faWhatsapp, faFacebookMessenger);
-
 const GoogleMap = defineAsyncComponent(() => import('@/components/GoogleMap.vue'));
 // Состояние видимости кнопки "Наверх"
 const showScrollTop = ref(false);

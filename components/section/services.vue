@@ -146,13 +146,7 @@
 import { ref, onMounted, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAnimationStore } from '~/stores/animation';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import * as yup from 'yup';
-
-// Додаємо лише потрібні іконки до бібліотеки
-library.add(faCheck, faTimes);
 
 const { t } = useI18n();
 

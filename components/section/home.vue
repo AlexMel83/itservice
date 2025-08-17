@@ -161,12 +161,6 @@
 import { ref, onMounted, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAnimationStore } from '~/stores/animation';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faCode, faCamera, faVrCardboard, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
-
-// Додаємо лише потрібні іконки до бібліотеки
-library.add(faCode, faCamera, faVrCardboard, faTimes);
 
 const { t } = useI18n();
 const animationStore = useAnimationStore();
