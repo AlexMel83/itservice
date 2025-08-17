@@ -1,15 +1,17 @@
 <template>
   <section id="home" class="min-h-[900px] relative flex items-center pt-[80px] md:pt-0">
-    <NuxtImg
-      src="/img/pexels-buro-millennial.jpg"
-      alt="Background"
-      fetchpriority="high"
-      loading="lazy"
-      style="display: none"
-      format="webp"
-      width="800"
-      height="600"
-    />
+    <ClientOnly>
+      <NuxtImg
+        src="/img/pexels-buro-millennial.jpg"
+        alt="Background"
+        fetchpriority="high"
+        loading="lazy"
+        style="display: none"
+        format="webp"
+        width="800"
+        height="600"
+      />
+    </ClientOnly>
     <div class="absolute inset-0" :style="backgroundStyle"></div>
     <div class="container mx-auto text-center relative z-10 px-4">
       <h1
