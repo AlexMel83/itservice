@@ -30,6 +30,7 @@
       <button
         ref="buttonRef"
         @click="openModal"
+        aria-label="замовити послугу"
         class="bg-custom-orange text-custom-white px-8 py-3 rounded-full hover:bg-custom-border transition-colors animate-fade-in"
         style="--delay: 400ms; --initial-state: 0"
       >
@@ -46,9 +47,9 @@
           :style="`--delay: ${600 + index * 200}ms; --initial-state: 0;`"
         >
           <i :class="[services[service].icon, 'text-custom-orange text-3xl mb-4']"></i>
-          <h3 class="text-custom-white text-xl mb-2">
+          <h2 class="text-custom-white text-xl mb-2">
             {{ t(`home.services.${service}.title`) }}
-          </h3>
+          </h2>
           <p class="text-custom-gray">
             {{ t(`home.services.${service}.description`) }}
           </p>
@@ -67,8 +68,9 @@
         :class="{ 'opacity-100 transform scale-100': isModalOpen }"
       >
         <div class="flex justify-between items-center mb-6">
-          <h3 class="text-xl font-space-grotesk text-[#F5F5F5]">{{ modalTitle }}</h3>
-          <button @click="closeModal" class="text-[#A39F9D] hover:text-[#FF5500]">
+          <h2 class="text-xl font-space-grotesk text-[#F5F5F5]">{{ modalTitle }}</h2>
+          <button aria-label="закрити">
+            @click="closeModal" class="text-[#A39F9D] hover:text-[#FF5500]">
             <i class="fas fa-times"></i>
           </button>
         </div>
@@ -138,6 +140,7 @@
             ></textarea>
           </div>
           <button
+            aria-label="submit form"
             type="submit"
             class="w-full bg-[#FF5500] text-[#F5F5F5] py-3 rounded-full hover:bg-[#5C5C5C] transition-colors"
             :disabled="!isFormValid"

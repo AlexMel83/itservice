@@ -14,6 +14,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="text-custom-gray flex items-center"
+            aria-label="adress"
           >
             <i class="fas fa-map-marker-alt mr-2 text-custom-orange"></i>
             {{ $t('footer.address') }}
@@ -23,6 +24,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="text-custom-gray flex items-center"
+            aria-label="phone"
           >
             <i class="fas fa-phone mr-2 text-custom-orange"></i>
             +38 (095) 466-41-90
@@ -32,6 +34,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="text-custom-gray flex items-center"
+            aria-label="email"
           >
             <i class="fas fa-envelope mr-2 text-custom-orange"></i>
             it@starkon.pp.ua
@@ -43,6 +46,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="text-custom-gray hover:text-custom-orange transition-colors"
+              aria-label="viber"
             >
               <i class="fab fa-viber text-2xl"></i>
             </NuxtLink>
@@ -52,6 +56,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="text-custom-gray hover:text-custom-orange transition-colors"
+              aria-label="telegram"
             >
               <i class="fab fa-telegram text-2xl"></i>
             </NuxtLink>
@@ -61,6 +66,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="text-custom-gray hover:text-custom-orange transition-colors"
+              aria-label="whatsapp"
             >
               <i class="fab fa-whatsapp text-2xl"></i>
             </NuxtLink>
@@ -70,6 +76,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="text-custom-gray hover:text-custom-orange transition-colors"
+              aria-label="messenger"
             >
               <i class="fab fa-facebook-messenger text-2xl"></i>
             </NuxtLink>

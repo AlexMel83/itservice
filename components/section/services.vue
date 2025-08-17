@@ -44,6 +44,7 @@
             </li>
           </ul>
           <button
+            aria-label="замовити послугу"
             class="w-full bg-custom-orange text-custom-white py-3 rounded-full hover:bg-custom-border transition-colors"
             @click="openModal(price)"
           >
@@ -61,7 +62,9 @@
     >
       <div class="modal-content bg-[#1C1C1C] p-8 rounded-lg w-96 relative">
         <!-- Крестик закрытия -->
-        <button @click="closeModal" class="absolute top-4 right-4 text-custom-white text-2xl">&times;</button>
+        <button aria-label="закрити" @click="closeModal" class="absolute top-4 right-4 text-custom-white text-2xl">
+          &times;
+        </button>
 
         <!-- Заголовок модалки -->
         <h3 class="text-center text-custom-white mb-4">
@@ -121,6 +124,7 @@
 
           <!-- Кнопка відправки -->
           <button
+            aria-label="submit order"
             type="submit"
             class="w-full bg-custom-orange text-custom-white py-3 rounded-full hover:bg-custom-border transition-colors font-semibold"
           >

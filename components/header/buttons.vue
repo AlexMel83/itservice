@@ -10,10 +10,11 @@
           aria-label="change language"
           @click="changeLanguage(lang.code)"
         >
-          <span>{{ lang.name }}</span>
+          <span class="mx-1">{{ lang.name }}</span>
           <span v-if="index < locales.length - 1" class="text-white px-1">|</span>
         </button>
         <button
+          aria-label="Відкрити мобільне меню"
           @click="$emit('toggleMenu')"
           class="md:hidden text-custom-orange relative w-9 h-9 flex flex-col justify-center items-center gap-1 ml-5"
         >
