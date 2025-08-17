@@ -16,7 +16,12 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@pinia/nuxt',
+    'nuxt-gtag',
   ],
+  gtag: {
+    id: 'G-0L0ZVLVDK4',
+    loadingStrategy: 'defer',
+  },
   robots: {
     allow: '/',
     sitemap: 'https://it.starkon.pp.ua/sitemap.xml',
@@ -24,7 +29,10 @@ export default defineNuxtConfig({
   css: ['@/assets/css/style.css'],
   tailwindcss: {
     config: {
-      content: ['./pages/**/*.{vue,js}', './components/**/*.{vue,js}'],
+      content: [ './pages/**/*.{vue,js,ts}',
+      './components/**/*.{vue,js,ts}',
+      './layouts/**/*.{vue,js,ts}',
+    ],
     },
   },
   i18n: {
@@ -44,22 +52,26 @@ export default defineNuxtConfig({
             rel: 'stylesheet', 
             href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
           },
+          { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+          { rel: 'preconnect', href: 'https://cdnjs.cloudflare.com', crossorigin: '' },
+          { rel: 'preconnect', href: 'https://www.googletagmanager.com', crossorigin: '' },
+          { rel: 'preconnect', href: 'https://maps.googleapis.com', crossorigin: '' },
         ],
-        script: [
-          {
-            src: 'https://www.googletagmanager.com/gtag/js?id=G-0L0ZVLVDK4',
-            async: true,
-          },
-          {
-            innerHTML: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-0L0ZVLVDK4');
-            `,
-            defer: true,
-          },
-        ],
+        // script: [
+        //   {
+        //     src: 'https://www.googletagmanager.com/gtag/js?id=G-0L0ZVLVDK4',
+        //     async: true,
+        //   },
+        //   {
+        //     innerHTML: `
+        //       window.dataLayer = window.dataLayer || [];
+        //       function gtag(){dataLayer.push(arguments);}
+        //       gtag('js', new Date());
+        //       gtag('config', 'G-0L0ZVLVDK4');
+        //     `,
+        //     defer: true,
+        //   },
+        // ],
       },
     },
     runtimeConfig: {

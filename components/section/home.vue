@@ -6,8 +6,9 @@
       fetchpriority="high"
       loading="lazy"
       style="display: none"
-      width="1920"
-      height="1080"
+      format="webp"
+      width="800"
+      height="600"
     />
     <div class="absolute inset-0" :style="backgroundStyle"></div>
     <div class="container mx-auto text-center relative z-10 px-4">
