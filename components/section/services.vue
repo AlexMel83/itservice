@@ -39,7 +39,7 @@
           </div>
           <ul class="space-y-3 mb-8 text-custom-gray">
             <li v-for="(feature, i) in price.features" :key="i" class="flex items-center">
-              <font-awesome-icon :icon="['fas', 'check']" class="text-custom-orange mr-2" />
+              <IconCheck class="mr-2 text-custom-orange w-5 h-5" />
               <span>{{ t(`services.items.${price.key}.features.${i}`) }}</span>
             </li>
           </ul>
@@ -67,7 +67,7 @@
           @click="closeModal"
           class="absolute top-4 right-4 text-custom-white text-2xl hover:text-custom-orange"
         >
-          <font-awesome-icon :icon="['fas', 'times']" />
+          <IconClose class="w-6 h-6" />
         </button>
 
         <!-- Заголовок модалки -->
