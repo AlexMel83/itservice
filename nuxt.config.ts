@@ -7,7 +7,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-02-20',
   devtools: { enabled: true },
   components: true,
-  plugins: ['~/plugins/font-awesome.js'],
   modules: [
     '@nuxt/ui',
     '@nuxtjs/sitemap',
@@ -54,21 +53,6 @@ export default defineNuxtConfig({
           { rel: 'preconnect', href: 'https://www.googletagmanager.com', crossorigin: '' },
           { rel: 'preconnect', href: 'https://maps.googleapis.com', crossorigin: '' },
         ],
-        // script: [
-        //   {
-        //     src: 'https://www.googletagmanager.com/gtag/js?id=G-0L0ZVLVDK4',
-        //     async: true,
-        //   },
-        //   {
-        //     innerHTML: `
-        //       window.dataLayer = window.dataLayer || [];
-        //       function gtag(){dataLayer.push(arguments);}
-        //       gtag('js', new Date());
-        //       gtag('config', 'G-0L0ZVLVDK4');
-        //     `,
-        //     defer: true,
-        //   },
-        // ],
       },
     },
     runtimeConfig: {

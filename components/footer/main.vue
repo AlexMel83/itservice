@@ -67,7 +67,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="whatsapp"
             >
-              <IconWhatsapp class="text-2xl w-6 h-6" />
+              <IconWhatsapp class="text-2xl w-6 h-6 ml-2" />
             </NuxtLink>
             <NuxtLink
               to="https://m.me/alexandr.meleshko.9"
