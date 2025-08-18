@@ -13,11 +13,21 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    '@nuxtjs/critters',
     '@nuxtjs/i18n',
+    '@nuxt/icon',
     '@nuxt/image',
     '@pinia/nuxt',
     'nuxt-gtag',
   ],
+  icon: {
+    serverBundle: {
+      collections: ['uil', 'mdi']
+    }
+  },
+  critters: {
+    preload: 'swap',
+  },
   gtag: {
     id: 'G-0L0ZVLVDK4',
     loadingStrategy: 'defer',
@@ -33,6 +43,16 @@ export default defineNuxtConfig({
       './components/**/*.{vue,js,ts}',
       './layouts/**/*.{vue,js,ts}',
     ],
+    },
+  },
+  image: {
+  format: ['webp', 'avif'], // 👈
+  quality: 80,
+    screens: {
+      sm: 320,
+      md: 640,
+      lg: 1024,
+      xl: 1280,
     },
   },
   i18n: {
@@ -75,9 +95,17 @@ export default defineNuxtConfig({
         },
       ],
     },
+    experimental: {
+      inlineSSRStyles: false, // не дублювати CSS
+    },
     vite: {
       server: {
         allowedHosts: ['it.starkon.pp.ua', 'localhost', '127.0.0.1'],
+      },
+      build: {
+        rollupOptions: {
+          treeshake: true,
+        },
       },
     },
 });

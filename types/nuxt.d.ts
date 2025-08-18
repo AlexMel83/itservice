@@ -8,6 +8,14 @@ declare module 'app' {
 
 declare module '@nuxt/schema' {
   interface NuxtConfig {
+    experimental?: {
+      inlineSSRStyles?: boolean;
+    };
+    critters?: {
+      preload?: string;
+      inlineFonts?: boolean;
+      compress?: boolean;
+    };
     colorMode?: {
       preference?: string;
     };
@@ -26,6 +34,16 @@ declare module '@nuxt/schema' {
       supported: {
         optionalChaining: boolean;
       };
+    };
+  }
+  interface NuxtOptions {
+    experimental?: {
+      inlineSSRStyles?: boolean;
+    };
+    critters?: {
+      preload?: string;
+      inlineFonts?: boolean;
+      compress?: boolean;
     };
   }
 }

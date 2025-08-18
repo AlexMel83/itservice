@@ -8,8 +8,7 @@
         loading="lazy"
         style="display: none"
         format="webp"
-        width="800"
-        height="600"
+        quality="80"
       />
     </ClientOnly>
     <div class="absolute inset-0" :style="backgroundStyle"></div>
