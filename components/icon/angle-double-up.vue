@@ -3,7 +3,7 @@
     xmlns="http://www.w3.org/2000/svg"
     v-bind="$attrs"
     fill="currentColor"
-    viewBox="0 0 512 512"
+    viewBox="0 0 640 640"
     stroke="currentColor"
     stroke-width="10"
     class="icon w-8 h-8"

@@ -97,7 +97,7 @@
         class="fixed flex items-center justify-center bottom-6 right-6 bg-custom-orange text-custom-white w-12 h-12 rounded-full shadow-lg hover:bg-custom-border hover:scale-105 transition-all duration-300 z-50"
         title="Наверх"
       >
-        <IconAngleDoubleUp class="w-6 h-6 mr-1 mb-1" />
+        <IconAngleDoubleUp class="w-6 h-6" />
       </button>
     </div>
   </footer>
