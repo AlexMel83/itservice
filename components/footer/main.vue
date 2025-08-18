@@ -15,7 +15,7 @@
             class="text-custom-gray flex items-center"
             aria-label="address"
           >
-            <font-awesome-icon :icon="['fas', 'map-marker-alt']" class="mr-2 text-custom-orange" />
+            <IconMapMarkerAlt class="mr-2 text-custom-orange w-5 h-5" />
             {{ $t('footer.address') }}
           </NuxtLink>
           <NuxtLink
@@ -25,7 +25,7 @@
             class="text-custom-gray flex items-center"
             aria-label="phone"
           >
-            <font-awesome-icon :icon="['fas', 'phone']" class="mr-2 text-custom-orange" />
+            <IconPhone class="mr-2 text-custom-orange w-5 h-5" />
             +38 (095) 466-41-90
           </NuxtLink>
           <NuxtLink
@@ -35,7 +35,7 @@
             class="text-custom-gray flex items-center"
             aria-label="email"
           >
-            <font-awesome-icon :icon="['fas', 'envelope']" class="mr-2 text-custom-orange" />
+            <IconEnvelope class="mr-2 text-custom-orange w-5 h-5" />
             it@starkon.pp.ua
           </NuxtLink>
           <div class="flex space-x-6 mt-4">
@@ -47,7 +47,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="viber"
             >
-              <font-awesome-icon :icon="['fab', 'viber']" class="text-2xl" />
+              <IconViber class="text-2xl w-6 h-6" />
             </NuxtLink>
             <NuxtLink
               to="https://t.me/@itstarkon"
@@ -57,7 +57,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="telegram"
             >
-              <font-awesome-icon :icon="['fab', 'telegram']" class="text-2xl" />
+              <IconTelegram class="text-2xl w-6 h-6" />
             </NuxtLink>
             <NuxtLink
               to="https://wa.me/380954664190"
@@ -67,7 +67,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="whatsapp"
             >
-              <font-awesome-icon :icon="['fab', 'whatsapp']" class="text-2xl" />
+              <IconWhatsapp class="text-2xl w-6 h-6" />
             </NuxtLink>
             <NuxtLink
               to="https://m.me/alexandr.meleshko.9"
@@ -77,7 +77,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="messenger"
             >
-              <font-awesome-icon :icon="['fab', 'facebook-messenger']" class="text-2xl" />
+              <IconFacebookMessenger class="text-2xl w-6 h-6" />
             </NuxtLink>
           </div>
         </div>
@@ -94,16 +94,18 @@
       <button
         v-if="showScrollTop"
         @click="scrollToTop"
-        class="fixed bottom-6 right-6 bg-custom-orange text-custom-white p-3 w-12 h-12 rounded-full shadow-lg hover:bg-custom-border hover:scale-105 transition-all duration-300 z-50"
+        class="fixed flex items-center justify-center bottom-6 right-6 bg-custom-orange text-custom-white w-12 h-12 rounded-full shadow-lg hover:bg-custom-border hover:scale-105 transition-all duration-300 z-50"
         title="Наверх"
       >
-        <font-awesome-icon :icon="['fas', 'angle-double-up']" />
+        <IconAngleDoubleUp class="w-6 h-6 mr-1 mb-1" />
       </button>
     </div>
   </footer>
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+import { defineAsyncComponent } from 'vue';
 const GoogleMap = defineAsyncComponent(() => import('@/components/GoogleMap.vue'));
 // Состояние видимости кнопки "Наверх"
 const showScrollTop = ref(false);

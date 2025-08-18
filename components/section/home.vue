@@ -50,7 +50,7 @@
           target="_blank"
           :style="`--delay: ${600 + index * 200}ms; --initial-state: 0;`"
         >
-          <font-awesome-icon :icon="['fas', services[service].icon]" class="text-custom-orange text-3xl mb-4" />
+          <component :is="services[service].iconComponent" class="text-custom-orange w-12 h-12 mb-4 mx-auto" />
           <h2 class="text-custom-white text-xl mb-2">
             {{ t(`home.services.${service}.title`) }}
           </h2>
@@ -74,7 +74,7 @@
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-xl font-space-grotesk text-[#F5F5F5]">{{ modalTitle }}</h2>
           <button aria-label="закрити" @click="closeModal" class="text-[#A39F9D] hover:text-[#FF5500]">
-            <font-awesome-icon :icon="['fas', 'times']" />
+            <IconClose class="w-6 h-6" />
           </button>
         </div>
         <form v-if="!isFormSubmitted" @submit.prevent="submitForm" class="space-y-4">
@@ -160,9 +160,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted, nextTick, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAnimationStore } from '~/stores/animation';
+import IconCamera from '~/components/icon/camera.vue';
+import IconCode from '~/components/icon/code.vue';
+import IconVrCardboard from '~/components/icon/vr-cardboard.vue';
+import IconClose from '~/components/icon/close.vue';
 
 const { t } = useI18n();
 const animationStore = useAnimationStore();
@@ -172,9 +176,9 @@ const SECTION_ID = 'home-section';
 
 // Доступні послуги
 const services = {
-  webDevelopment: { icon: 'code' },
-  photo360: { icon: 'camera' },
-  virtualTours: { icon: 'vr-cardboard' },
+  webDevelopment: { iconComponent: IconCode },
+  photo360: { iconComponent: IconCamera },
+  virtualTours: { iconComponent: IconVrCardboard },
 };
 const serviceKeys = Object.keys(services);
 
@@ -201,11 +205,9 @@ const setElementInitialState = (el, value) => {
 
 // Створюємо і налаштовуємо Intersection Observer
 const setupIntersectionObserver = () => {
-  // Перевіряємо, чи була секція вже анімована через Pinia
   const alreadyAnimated = animationStore.isSectionAnimated(SECTION_ID);
 
   if (alreadyAnimated) {
-    // Якщо вже анімована, встановлюємо початковий стан у 1 для всіх елементів
     setElementInitialState(titleRef.value, 1);
     setElementInitialState(textRef1.value, 1);
     setElementInitialState(textRef2.value, 1);
@@ -213,12 +215,12 @@ const setupIntersectionObserver = () => {
     serviceRefs.value.forEach((ref) => {
       setElementInitialState(ref, 1);
     });
-    return null; // Не створюємо observer
+    return null;
   }
 
   const options = {
     root: null,
-    rootMargin: '0px 0px -20% 0px', // Тригер, коли елемент вище нижньої 1/5 екрана
+    rootMargin: '0px 0px -20% 0px',
     threshold: 0.1,
   };
 
@@ -229,24 +231,18 @@ const setupIntersectionObserver = () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         hasIntersectingElements = true;
-        // Встановлюємо CSS змінну для запуску анімації
         setElementInitialState(entry.target, 1);
-
-        // Відключаємо спостереження за елементом після його появи
         observer.unobserve(entry.target);
       } else {
         allVisible = false;
       }
     });
 
-    // Якщо всі спостерігаючі елементи стали видимими або хоча б один став видимим і більше немає елементів
     if ((allVisible && hasIntersectingElements) || document.querySelectorAll('.animate-fade-in').length === 0) {
-      // Зберігаємо стан у Pinia
       animationStore.setSectionAnimated(SECTION_ID);
     }
   }, options);
 
-  // Спостерігаємо за всіма елементами
   if (titleRef.value) observer.observe(titleRef.value);
   if (textRef1.value) observer.observe(textRef1.value);
   if (textRef2.value) observer.observe(textRef2.value);
@@ -262,11 +258,9 @@ const setupIntersectionObserver = () => {
 let observer = null;
 
 onMounted(() => {
-  // Чекаємо наступного тика рендерингу, щоб рефи були доступні
   nextTick(() => {
     observer = setupIntersectionObserver();
 
-    // Обробник для навігації (якщо використовується router)
     window.addEventListener('popstate', () => {
       if (observer) {
         observer.disconnect();
@@ -308,12 +302,12 @@ const openModal = () => (isModalOpen.value = true);
 const closeModal = () => {
   isModalOpen.value = false;
   isFormSubmitted.value = false;
-  form.value = { name: '', email: '', phone: '', service: '', message: '' }; // Очистка форми
+  form.value = { name: '', email: '', phone: '', service: '', message: '' };
 };
 
 async function submitForm() {
   isFormTouched.value = true;
-  if (!isFormValid.value) return; // Якщо форма не валідна, не відправляємо
+  if (!isFormValid.value) return;
 
   try {
     const response = await fetch('/api/telegram', {
@@ -331,7 +325,7 @@ async function submitForm() {
 
     const result = await response.json();
     if (result.ok) {
-      isFormSubmitted.value = true; // Успішна відправка
+      isFormSubmitted.value = true;
     } else {
       console.error('Помилка:', result);
       alert(t('home.form.errorMessage'));
