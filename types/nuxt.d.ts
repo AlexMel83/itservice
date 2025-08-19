@@ -1,8 +1,8 @@
-import { ApiModule } from '../api/index';
+// import { ApiModule } from '../api/index';
 
 declare module 'app' {
   interface NuxtApp {
-    $api: ApiModule;
+    // $api: ApiModule;
   }
 }
 
@@ -23,9 +23,6 @@ declare module '@nuxt/schema' {
       exposeConfig?: boolean;
       viewer?: boolean;
       config?: object;
-    };
-    ui?: {
-      icons: Array[];
     };
     esbuild?: {
       jsxFactory: string;

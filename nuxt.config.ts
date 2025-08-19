@@ -55,9 +55,6 @@ export default defineNuxtConfig({
       type: 'module',
     },
   },
-  critters: {
-    preload: 'swap',
-  },
   gtag: {
     id: 'G-0L0ZVLVDK4',
     loadingStrategy: 'defer',
@@ -69,9 +66,9 @@ export default defineNuxtConfig({
   css: ['@/assets/css/style.css'],
   tailwindcss: {
     config: {
-      content: [ './pages/**/*.{vue,js,ts}',
-      './components/**/*.{vue,js,ts}',
-      './layouts/**/*.{vue,js,ts}',
+      content: [ './app/pages/**/*.{vue,js,ts}',
+      './app/components/**/*.{vue,js,ts}',
+      './app/layouts/**/*.{vue,js,ts}',
     ],
     },
   },
@@ -132,9 +129,6 @@ export default defineNuxtConfig({
           maxAge: 60 * 60 * 24 * 365,
         },
       ],
-    },
-    experimental: {
-      inlineSSRStyles: false, // не дублювати CSS
     },
     vite: {
       server: {
