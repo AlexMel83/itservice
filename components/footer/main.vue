@@ -15,7 +15,7 @@
             class="text-custom-gray flex items-center"
             aria-label="address"
           >
-            <IconMapMarkerAlt class="mr-2 text-custom-orange w-5 h-5" />
+            <Icon name="jam:map-marker" class="mr-2 text-custom-orange w-6 h-6" />
             {{ $t('footer.address') }}
           </NuxtLink>
           <NuxtLink
@@ -25,7 +25,7 @@
             class="text-custom-gray flex items-center"
             aria-label="phone"
           >
-            <IconPhone class="mr-2 text-custom-orange w-5 h-5" />
+            <Icon name="material-symbols:phone-enabled-sharp" class="mr-2 text-custom-orange w-6 h-6" />
             +38 (095) 466-41-90
           </NuxtLink>
           <NuxtLink
@@ -35,7 +35,7 @@
             class="text-custom-gray flex items-center"
             aria-label="email"
           >
-            <IconEnvelope class="mr-2 text-custom-orange w-5 h-5" />
+            <Icon name="material-symbols:mail" class="mr-2 text-custom-orange w-6 h-6" />
             it@starkon.pp.ua
           </NuxtLink>
           <div class="flex space-x-6 mt-4">
@@ -47,7 +47,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="viber"
             >
-              <IconViber class="text-2xl w-6 h-6" />
+              <Icon name="cib:viber" class="mr-2 w-6 h-6" />
             </NuxtLink>
             <NuxtLink
               to="https://t.me/@itstarkon"
@@ -57,7 +57,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="telegram"
             >
-              <IconTelegram class="text-2xl w-6 h-6" />
+              <Icon name="mingcute:telegram-fill" class="mr-2 w-6 h-6" />
             </NuxtLink>
             <NuxtLink
               to="https://wa.me/380954664190"
@@ -67,7 +67,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="whatsapp"
             >
-              <IconWhatsapp class="text-2xl w-6 h-6 ml-2" />
+              <Icon name="ic:baseline-whatsapp" class="mr-2 w-6 h-6" />
             </NuxtLink>
             <NuxtLink
               to="https://m.me/alexandr.meleshko.9"
@@ -77,7 +77,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="messenger"
             >
-              <IconFacebookMessenger class="text-2xl w-6 h-6" />
+              <Icon name="mdi:facebook-messenger" class="mr-2 w-6 h-6" /> mdi:chevron-double-up
             </NuxtLink>
           </div>
         </div>
@@ -94,10 +94,10 @@
       <button
         v-if="showScrollTop"
         @click="scrollToTop"
-        class="fixed flex items-center justify-center bottom-6 right-6 bg-custom-orange text-custom-white w-12 h-12 rounded-full shadow-lg hover:bg-custom-border hover:scale-105 transition-all duration-300 z-50"
+        class="fixed flex items-center justify-center bottom-6 right-6 bg-custom-orange text-custom-white w-9 h-9 rounded-full shadow-lg hover:bg-custom-border hover:scale-105 transition-all duration-300 z-50"
         title="Наверх"
       >
-        <IconAngleDoubleUp class="w-6 h-6" />
+        <Icon name="mdi:chevron-double-up" class="w-8 h-8" />
       </button>
     </div>
   </footer>
