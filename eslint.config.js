@@ -5,8 +5,18 @@ import vueParser from 'vue-eslint-parser';
 
 export default [
   {
+    ignores: [
+      '.nuxt/**',
+      'dist/**',
+      'node_modules/**',
+      '.husky/**',
+      '.wrangler/**',
+      '.output/**',
+      'public/manifest.webmanifest',
+    ],
+  },
+  {
     files: ['**/*.{js,ts,vue}'],
-    ignores: ['.nuxt/**', 'dist/**', 'node_modules/**', '.husky/**', '.wrangler/**', '.output/**'],
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',

@@ -77,7 +77,7 @@
               class="text-custom-gray hover:text-custom-orange transition-colors"
               aria-label="messenger"
             >
-              <Icon name="mdi:facebook-messenger" class="mr-2 w-6 h-6" /> mdi:chevron-double-up
+              <Icon name="mdi:facebook-messenger" class="mr-2 w-6 h-6" />
             </NuxtLink>
           </div>
         </div>
