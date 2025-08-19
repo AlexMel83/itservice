@@ -10,6 +10,7 @@
         name: 'IT-Starkon',
         image: 'https://it.starkon.pp.ua/img/360-virtual-tour-v2.jpg',
         url: 'https://it.starkon.pp.ua',
+        logo: 'https://it.starkon.pp.ua/favicon.ico',
         telephone: '+380954664190',
         address: {
           '@type': 'PostalAddress',

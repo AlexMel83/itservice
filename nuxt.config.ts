@@ -15,11 +15,44 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/critters',
     '@nuxtjs/i18n',
+    '@vite-pwa/nuxt',
     '@nuxt/image',
     '@pinia/nuxt',
     'nuxt-gtag',
     '@nuxt/icon',
   ],
+  // @ts-ignore
+  pwa: {
+    manifest: {
+      name: 'IT-Starkon',
+      short_name: 'IT-Starkon',
+      description: 'Віртуальні 3D тури та IT-рішення для вашого бізнесу в Старокостянтинові',
+      theme_color: '#0057b7',
+      background_color: '#0057b7',
+      display: 'standalone',
+      start_url: '/?utm_source=pwa',
+      icons: [
+        {
+          src: '/android-chrome-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: '/android-chrome-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html,png,svg,jpg}'],
+    },
+    devOptions: {
+      enabled: true,
+      type: 'module',
+    },
+  },
   critters: {
     preload: 'swap',
   },
@@ -70,6 +103,11 @@ export default defineNuxtConfig({
           { rel: 'preconnect', href: 'https://cdnjs.cloudflare.com', crossorigin: '' },
           { rel: 'preconnect', href: 'https://www.googletagmanager.com', crossorigin: '' },
           { rel: 'preconnect', href: 'https://maps.googleapis.com', crossorigin: '' },
+          { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+          { rel: 'icon', type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+          { rel: 'icon', type: "image/png", sizes: "36x16", href: "/favicon-16x16.png" },
+          { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: "180x180" },
+          { rel: 'manifest', href: '/site.webmanifest' },
         ],
       },
     },

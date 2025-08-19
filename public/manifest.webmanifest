@@ -1,0 +1,30 @@
+{
+  "name": "IT-Starkon",
+  "short_name": "IT-Starkon",
+  "description": "Віртуальні 3D тури та IT-рішення для вашого бізнесу в Старокостянтинові",
+  "start_url": "/?utm_source=web_app_manifest",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0057b7",
+  "theme_color": "#0057b7",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/360-virtual-tour-v2.jpg",
+      "sizes": "588x493",
+      "type": "image/jpg"
+    }
+  ],
+  "related_applications": []
+}
