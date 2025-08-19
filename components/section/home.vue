@@ -49,7 +49,8 @@
           target="_blank"
           :style="`--delay: ${600 + index * 200}ms; --initial-state: 0;`"
         >
-          <component :is="services[service].iconComponent" class="text-custom-orange w-12 h-12 mb-4 mx-auto" />
+          <!-- Nuxt Icon -->
+          <Icon :name="services[service].icon" class="text-custom-orange w-12 h-12 mb-4 mx-auto" />
           <h2 class="text-custom-white text-xl mb-2">
             {{ t(`home.services.${service}.title`) }}
           </h2>
@@ -60,23 +61,24 @@
       </div>
     </div>
 
-    <!-- Модальное окно -->
+    <!-- Модальне вікно -->
     <div
       v-if="isModalOpen"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-500"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-500 p-4 sm:p-6"
       :class="{ 'backdrop-blur-sm': isModalOpen }"
     >
       <div
-        class="bg-[#090402] p-8 rounded-lg border border-[#5C5C5C] max-w-md w-full transition-transform duration-500 transform scale-95 opacity-0"
+        class="bg-[#090402] rounded-lg border border-[#5C5C5C] w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl p-6 sm:p-8 transition-transform duration-500 transform scale-95 opacity-0 max-h-screen overflow-y-auto"
         :class="{ 'opacity-100 transform scale-100': isModalOpen }"
       >
         <div class="flex justify-between items-center mb-6">
-          <h2 class="text-xl font-space-grotesk text-[#F5F5F5]">{{ modalTitle }}</h2>
+          <h2 class="text-xl sm:text-2xl font-space-grotesk text-[#F5F5F5]">{{ modalTitle }}</h2>
           <button aria-label="закрити" @click="closeModal" class="text-[#A39F9D] hover:text-[#FF5500]">
-            <IconClose class="w-6 h-6" />
+            <Icon name="material-symbols:close" class="w-6 h-6 sm:w-8 sm:h-8" />
           </button>
         </div>
-        <form v-if="!isFormSubmitted" @submit.prevent="submitForm" class="space-y-4">
+        <!-- Форма замовлення -->
+        <form v-if="!isFormSubmitted" @submit.prevent="submitForm" class="flex flex-col gap-4">
           <div>
             <label class="block text-[#A39F9D] mb-2">{{ t('home.form.name') }}</label>
             <input
@@ -84,7 +86,7 @@
               name="name"
               type="text"
               required
-              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-3 sm:px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
             />
           </div>
           <div>
@@ -92,9 +94,9 @@
             <input
               v-model="form.email"
               type="email"
-              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
               required
               @blur="isFormTouched = true"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-3 sm:px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
             />
             <p v-if="isFormTouched && !isEmailValid" class="text-red-500 text-sm mt-1">
               {{ t('home.form.email_error') }}
@@ -106,9 +108,9 @@
               v-model="form.phone"
               type="tel"
               placeholder="380987654321"
-              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
               required
               @blur="isFormTouched = true"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-3 sm:px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
             />
             <p v-if="isFormTouched && !isPhoneValid" class="text-red-500 text-sm mt-1">
               {{ t('home.form.phone_error') }}
@@ -118,10 +120,9 @@
             <label class="block text-[#A39F9D] mb-2">{{ t('home.form.services.title') }}</label>
             <select
               v-model="form.service"
-              name="service"
               required
               @blur="isFormTouched = true"
-              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-3 sm:px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
             >
               <option value="">{{ t('home.form.services.placeholder') }}</option>
               <option value="website">{{ t('home.form.services.development') }}</option>
@@ -138,11 +139,10 @@
             <textarea
               v-model="form.message"
               name="message"
-              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500] h-32"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-3 sm:px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500] h-32"
             ></textarea>
           </div>
           <button
-            aria-label="submit form"
             type="submit"
             class="w-full bg-[#FF5500] text-[#F5F5F5] py-3 rounded-full hover:bg-[#5C5C5C] transition-colors"
             :disabled="!isFormValid"
@@ -150,6 +150,7 @@
             {{ t('home.form.submit') }}
           </button>
         </form>
+
         <div v-else class="text-center">
           <p class="text-[#F5F5F5] text-lg">{{ successMessage }}</p>
         </div>
@@ -162,10 +163,6 @@
 import { ref, onMounted, nextTick, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAnimationStore } from '~/stores/animation';
-import IconCamera from '~/components/icon/camera.vue';
-import IconCode from '~/components/icon/code.vue';
-import IconVrCardboard from '~/components/icon/vr-cardboard.vue';
-import IconClose from '~/components/icon/close.vue';
 
 const { t } = useI18n();
 const animationStore = useAnimationStore();
@@ -173,11 +170,10 @@ const animationStore = useAnimationStore();
 // ID секції для зберігання в Pinia
 const SECTION_ID = 'home-section';
 
-// Доступні послуги
 const services = {
-  webDevelopment: { iconComponent: IconCode },
-  photo360: { iconComponent: IconCamera },
-  virtualTours: { iconComponent: IconVrCardboard },
+  webDevelopment: { icon: 'mdi:code-tags' },
+  photo360: { icon: 'mdi:camera' },
+  virtualTours: { icon: 'fa6-solid:vr-cardboard' },
 };
 const serviceKeys = Object.keys(services);
 
