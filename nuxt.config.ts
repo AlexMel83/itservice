@@ -93,7 +93,8 @@ export default defineNuxtConfig({
       detectBrowserLanguage: false,
       bundle: {
         optimizeTranslationDirective: false
-      }
+      },
+      seo: true,
     },
     app: {
       head: {

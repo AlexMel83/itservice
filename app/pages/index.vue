@@ -12,10 +12,16 @@
         url: 'https://it.starkon.pp.ua',
         logo: 'https://it.starkon.pp.ua/favicon.ico',
         telephone: '+380954664190',
+        email: 'it@starkon.pp.ua',
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Старокостянтинів',
           addressCountry: 'UA',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: 49.755625,
+          longitude: 27.202679,
         },
         description:
           'Інноваційні IT-рішення для бізнесу у Старокостянтинові: розробка сайтів, 360° зйомка та створення віртуальних 3D турів. Спеціальні пропозиції для постійних клієнтів і ветеранів.',
