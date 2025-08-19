@@ -15,16 +15,10 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/critters',
     '@nuxtjs/i18n',
-    '@nuxt/icon',
     '@nuxt/image',
     '@pinia/nuxt',
     'nuxt-gtag',
   ],
-  icon: {
-    serverBundle: {
-      collections: ['uil', 'mdi']
-    }
-  },
   critters: {
     preload: 'swap',
   },
