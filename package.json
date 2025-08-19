@@ -12,7 +12,7 @@
     "preview": "nuxt preview",
     "start": "nuxt preview",
     "postinstall": "nuxt prepare && husky install",
-    "precommit": "eslint --fix --ext .js,.ts,.vue ./components ./pages \"./**/*.{js,ts,vue}\" && prettier --write \"./**/*.{js,ts,vue,css,scss}\""
+    "precommit": "eslint --fix \"./**/*.{js,ts,vue}\" && prettier --write \"./**/*.{js,ts,vue,css,scss}\""
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.10",
