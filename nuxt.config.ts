@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@pinia/nuxt',
     'nuxt-gtag',
+    '@nuxt/icon',
   ],
   critters: {
     preload: 'swap',
@@ -58,6 +59,9 @@ export default defineNuxtConfig({
       defaultLocale: 'uk',
       strategy: 'prefix_except_default',
       detectBrowserLanguage: false,
+      bundle: {
+        optimizeTranslationDirective: false
+      }
     },
     app: {
       head: {

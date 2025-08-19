@@ -20,6 +20,7 @@
       >
         {{ t('home.title') }}
       </h1>
+      <Icon name="uil:github" style="color: black" />
       <p ref="textRef1" class="text-xl text-custom-gray animate-fade-in" style="--delay: 200ms; --initial-state: 0">
         {{ t('home.description[0]') }}
       </p>
