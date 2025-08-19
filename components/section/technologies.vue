@@ -21,7 +21,9 @@
               class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <component :is="tech.icon" class="text-custom-orange mr-4 w-9 h-9" aria-hidden="true" />
+                <div class="flex-shrink-0 w-9 h-9 p-1">
+                  <Icon :name="tech.icon" class="text-custom-orange w-full h-full" aria-hidden="true" />
+                </div>
                 <h4 class="text-custom-white">{{ $t(`technologies.frontend.${tech.key}.name`) }}</h4>
               </div>
               <p class="text-custom-gray">
@@ -44,7 +46,9 @@
               class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <component :is="tech.icon" class="text-custom-orange mr-4 w-9 h-9" aria-hidden="true" />
+                <div class="flex-shrink-0 w-9 h-9 p-1">
+                  <Icon :name="tech.icon" class="text-custom-orange w-full h-full" aria-hidden="true" />
+                </div>
                 <h4 class="text-custom-white">{{ $t(`technologies.backend.${tech.key}.name`) }}</h4>
               </div>
               <p class="text-custom-gray">
@@ -67,7 +71,9 @@
               class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <component :is="tech.icon" class="text-custom-orange mr-4 w-9 h-9" aria-hidden="true" />
+                <div class="flex-shrink-0 w-9 h-9 p-1">
+                  <Icon :name="tech.icon" class="text-custom-orange w-full h-full" aria-hidden="true" />
+                </div>
                 <h4 class="text-custom-white">{{ $t(`technologies.cloud.${tech.key}.name`) }}</h4>
               </div>
               <p class="text-custom-gray">
@@ -90,7 +96,9 @@
               class="tech-block bg-[#090402] p-6 rounded-lg border border-custom-border transition-all duration-300 hover:-translate-y-2 hover:border-custom-orange"
             >
               <div class="flex items-center mb-4">
-                <component :is="tech.icon" class="text-custom-orange mr-4 w-9 h-9" aria-hidden="true" />
+                <div class="flex-shrink-0 w-9 h-9 p-1">
+                  <Icon :name="tech.icon" class="text-custom-orange w-full h-full" aria-hidden="true" />
+                </div>
                 <h4 class="text-custom-white">{{ $t(`technologies.tools.${tech.key}.name`) }}</h4>
               </div>
               <p class="text-custom-gray">
@@ -106,65 +114,40 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-// Імпортуйте ВСІ SVG-компоненти, які потрібні для технологій:
-import IconVuejs from '@/components/icon/vuejs.vue';
-import IconReact from '@/components/icon/react.vue';
-import IconPwa from '@/components/icon/pwa.vue';
-import IconTailwindcss from '@/components/icon/tailwindcss.vue';
-import IconCode from '@/components/icon/code.vue';
-import IconMapMarkerAlt from '@/components/icon/map-marker-alt.vue';
 
-import IconNodeJs from '@/components/icon/node-js.vue';
-import IconServer from '@/components/icon/server.vue';
-import IconPostgresql from '@/components/icon/postgresql.vue';
-import IconDatabase from '@/components/icon/database.vue';
-import IconDocker from '@/components/icon/docker.vue';
-
-import IconAws from '@/components/icon/aws.vue';
-import IconMicrosoft from '@/components/icon/microsoft.vue';
-import IconGoogle from '@/components/icon/google.vue';
-import IconCloud from '@/components/icon/cloud.vue';
-
-import IconWordpress from '@/components/icon/wordpress.vue';
-import IconGithub from '@/components/icon/github.vue';
-import IconFigma from '@/components/icon/figma.vue';
-import IconCreditCard from '@/components/icon/credit-card.vue';
-import IconLock from '@/components/icon/lock.vue';
-
-// Дані технологій (оновіть імена компонентів згідно разташування файлів!)
 const frontendTechs = [
-  { key: 'react_next', icon: IconReact },
-  { key: 'vue_nuxt', icon: IconVuejs },
-  { key: 'pwa', icon: IconPwa },
-  { key: 'tailwindcss', icon: IconTailwindcss },
-  { key: 'typescript', icon: IconCode },
-  { key: 'leaflet', icon: IconMapMarkerAlt },
+  { key: 'react_next', icon: 'mdi:react' },
+  { key: 'vue_nuxt', icon: 'devicon-plain:nuxtjs' },
+  { key: 'pwa', icon: 'simple-icons:pwa' },
+  { key: 'tailwindcss', icon: 'mdi:tailwind' },
+  { key: 'typescript', icon: 'mdi:language-typescript' },
+  { key: 'leaflet', icon: 'file-icons:leaflet' },
 ];
 
 const backendTechs = [
-  { key: 'nodejs', icon: IconNodeJs },
-  { key: 'nestjs', icon: IconServer },
-  { key: 'postgresql', icon: IconPostgresql },
-  { key: 'mysql', icon: IconDatabase },
-  { key: 'swagger', icon: IconCode },
-  { key: 'docker', icon: IconDocker },
+  { key: 'nodejs', icon: 'mdi:nodejs' },
+  { key: 'nestjs', icon: 'file-icons:nestjs' },
+  { key: 'postgresql', icon: 'akar-icons:postgresql-fill' },
+  { key: 'mysql', icon: 'cib:mysql' },
+  { key: 'swagger', icon: 'file-icons:swagger' },
+  { key: 'docker', icon: 'mdi:docker' },
 ];
 
 const cloudTechs = [
-  { key: 'aws', icon: IconAws },
-  { key: 'azure', icon: IconMicrosoft },
-  { key: 'google_cloud', icon: IconGoogle },
-  { key: 'oracle_cloud', icon: IconCloud },
-  { key: 'cloudflare', icon: IconCloud },
+  { key: 'aws', icon: 'mdi:aws' },
+  { key: 'azure', icon: 'mdi:microsoft-azure' },
+  { key: 'google_cloud', icon: 'mdi:google-cloud' },
+  { key: 'oracle_cloud', icon: 'lineicons:oracle' },
+  { key: 'cloudflare', icon: 'devicon-plain:cloudflare' },
 ];
 
 const toolsTechs = [
-  { key: 'wordpress', icon: IconWordpress },
-  { key: 'git', icon: IconGithub },
-  { key: 'figma', icon: IconFigma },
-  { key: 'liqpay', icon: IconCreditCard },
-  { key: 'oauth2', icon: IconLock },
-  { key: 'eslint_prettier', icon: IconCode },
+  { key: 'wordpress', icon: 'mdi:wordpress' },
+  { key: 'git', icon: 'mdi:github' },
+  { key: 'figma', icon: 'solar:figma-bold' },
+  { key: 'liqpay', icon: 'mdi:credit-card' },
+  { key: 'oauth2', icon: 'mdi:lock' },
+  { key: 'eslint_prettier', icon: 'mdi:eslint' },
 ];
 
 // Refs для відстеження елементів

@@ -39,7 +39,7 @@
           </div>
           <ul class="space-y-3 mb-8 text-custom-gray">
             <li v-for="(feature, i) in price.features" :key="i" class="flex items-center">
-              <IconCheck class="mr-2 text-custom-orange w-5 h-5" />
+              <Icon name="material-symbols:check" class="w-6 h-6 sm:w-8 sm:h-8" />
               <span>{{ t(`services.items.${price.key}.features.${i}`) }}</span>
             </li>
           </ul>
@@ -58,32 +58,34 @@
     <!-- Модалка заказа услуги -->
     <div
       v-if="isModalOpen"
-      class="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+      class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50 p-4 sm:p-6"
     >
-      <div class="modal-content bg-[#1C1C1C] p-8 rounded-lg w-96 relative">
+      <div
+        class="relative bg-[#1C1C1C] rounded-lg border border-[#5C5C5C] w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl p-4 sm:p-6 md:p-8 max-h-screen overflow-y-auto"
+      >
         <!-- Кнопка закриття -->
         <button
           aria-label="закрити"
           @click="closeModal"
-          class="absolute top-4 right-4 text-custom-white text-2xl hover:text-custom-orange"
+          class="absolute top-3 right-3 sm:top-4 sm:right-4 text-custom-white hover:text-custom-orange"
         >
-          <IconClose class="w-6 h-6" />
+          <Icon name="material-symbols:close" class="w-6 h-6 sm:w-8 sm:h-8" />
         </button>
 
         <!-- Заголовок модалки -->
-        <h3 class="text-center text-custom-white mb-4">
+        <h3 class="text-center text-custom-white text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6">
           {{ t('services.modal.title') }} {{ selectedService ? t(`services.items.${selectedService.key}.title`) : '' }}
         </h3>
 
-        <form v-if="!isSuccess" @submit.prevent="validateForm" class="space-y-4">
+        <form v-if="!isSuccess" @submit.prevent="validateForm" class="flex flex-col gap-4">
           <!-- Ім'я -->
           <div class="flex flex-col">
-            <label for="name" class="text-[#A39F9D] font-medium mb-2">{{ t('services.modal.name') }}</label>
+            <label for="name" class="text-[#A39F9D] font-medium mb-1 sm:mb-2">{{ t('services.modal.name') }}</label>
             <input
               id="name"
               v-model="orderForm.name"
               type="text"
-              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-3 sm:px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
               :class="{ 'border-red-500': errors.name }"
             />
             <p v-if="errors.name" class="text-red-500 text-sm mt-1">{{ errors.name }}</p>
@@ -91,12 +93,12 @@
 
           <!-- Email -->
           <div class="flex flex-col">
-            <label for="email" class="text-[#A39F9D] font-medium mb-2">{{ t('services.modal.email') }}</label>
+            <label for="email" class="text-[#A39F9D] font-medium mb-1 sm:mb-2">{{ t('services.modal.email') }}</label>
             <input
               id="email"
               v-model="orderForm.email"
               type="email"
-              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-3 sm:px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
               :class="{ 'border-red-500': errors.email }"
             />
             <p v-if="errors.email" class="text-red-500 text-sm mt-1">{{ errors.email }}</p>
@@ -104,24 +106,26 @@
 
           <!-- Телефон -->
           <div class="flex flex-col">
-            <label for="phone" class="text-[#A39F9D] font-medium mb-2">{{ t('services.modal.phone') }}</label>
+            <label for="phone" class="text-[#A39F9D] font-medium mb-1 sm:mb-2">{{ t('services.modal.phone') }}</label>
             <input
               id="phone"
               v-model="orderForm.phone"
               type="tel"
-              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-3 sm:px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
               :class="{ 'border-red-500': errors.phone }"
             />
             <p v-if="errors.phone" class="text-red-500 text-sm mt-1">{{ errors.phone }}</p>
           </div>
 
           <!-- Повідомлення -->
-          <div class="flex flex-col mb-4">
-            <label for="message" class="text-[#A39F9D] font-medium mb-2">{{ t('services.modal.message') }}</label>
+          <div class="flex flex-col">
+            <label for="message" class="text-[#A39F9D] font-medium mb-1 sm:mb-2">{{
+              t('services.modal.message')
+            }}</label>
             <textarea
               id="message"
               v-model="orderForm.message"
-              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
+              class="w-full bg-[#1C1C1C] text-[#F5F5F5] px-3 sm:px-4 py-2 rounded-lg border border-[#5C5C5C] focus:outline-none focus:border-[#FF5500]"
               rows="4"
             ></textarea>
           </div>
@@ -136,7 +140,7 @@
           </button>
         </form>
 
-        <p v-else class="text-center text-green-500">{{ successMessage }}</p>
+        <p v-else class="text-center text-green-500 mt-4">{{ successMessage }}</p>
       </div>
     </div>
   </section>

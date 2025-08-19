@@ -66,11 +66,11 @@ export default defineI18nConfig(() => ({
         },
         frontend: {
           react_next: {
-            name: 'React/Next.js',
+            name: 'React / Next.js',
             description: 'Powerful frameworks for building SEO-optimized applications',
           },
           vue_nuxt: {
-            name: 'Vue.js/Nuxt',
+            name: 'Vue.js / Nuxt',
             description: 'Progressive frameworks for rapid development',
           },
           pwa: {
@@ -160,7 +160,7 @@ export default defineI18nConfig(() => ({
             description: 'Secure authorization and authentication',
           },
           eslint_prettier: {
-            name: 'ESLint/Prettier',
+            name: 'ESLint / Prettier',
             description: 'Code standardization and formatting',
           },
         },
@@ -376,11 +376,11 @@ export default defineI18nConfig(() => ({
         },
         frontend: {
           react_next: {
-            name: 'React/Next.js',
+            name: 'React / Next.js',
             description: 'Потужні фреймворки для створення SEO-оптимізованих додатків',
           },
           vue_nuxt: {
-            name: 'Vue.js/Nuxt',
+            name: 'Vue.js / Nuxt',
             description: 'Прогресивні фреймворки для швидкої розробки',
           },
           pwa: {
@@ -470,7 +470,7 @@ export default defineI18nConfig(() => ({
             description: 'Безпечна авторизація та автентифікація',
           },
           eslint_prettier: {
-            name: 'ESLint/Prettier',
+            name: 'ESLint / Prettier',
             description: 'Стандартизація та форматування коду',
           },
         },
