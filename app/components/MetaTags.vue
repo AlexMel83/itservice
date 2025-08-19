@@ -20,6 +20,7 @@ const props = defineProps({
 const config = useRuntimeConfig();
 const route = useRoute();
 const baseUrl = config.public.baseURL || 'https://it.starkon.pp.ua';
+const { locale } = useI18n();
 
 // Повна URL-адреса сторінки
 
