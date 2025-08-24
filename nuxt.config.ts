@@ -91,16 +91,10 @@ export default defineNuxtConfig({
       defaultLocale: 'uk',
       strategy: 'prefix_except_default',
       detectBrowserLanguage: false,
-      bundle: {
-        optimizeTranslationDirective: false
-      },
-      seo: true,
     },
     app: {
       head: {
         link: [
-          { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-          { rel: 'preconnect', href: 'https://cdnjs.cloudflare.com', crossorigin: '' },
           { rel: 'preconnect', href: 'https://www.googletagmanager.com', crossorigin: '' },
           { rel: 'preconnect', href: 'https://maps.googleapis.com', crossorigin: '' },
           { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

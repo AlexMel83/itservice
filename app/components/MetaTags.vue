@@ -33,15 +33,11 @@ const urlImage = computed(() => {
   return img.startsWith('http') ? img : `https://it.starkon.pp.ua${img.startsWith('/') ? '' : '/'}${img}`;
 });
 
-const localizedTitle = computed(() => {
-  return locale.value === 'en' ? `Virtual 3D Tours & IT Solutions in Starokostiantyniv` : props.title;
-});
-const localizedDescription = computed(() => {
-  const baseDesc =
-    locale.value === 'en'
-      ? 'Innovative 3D tours, 360° filming, and website development in Starokostiantyniv. Special offers for regular clients and veterans.'
-      : props.description;
-  return baseDesc.length > 150 ? baseDesc.slice(0, 150) + '...' : baseDesc; // Обмеження до 150 символів
+const trimmedDescription = computed(() => {
+  const baseDesc = props.description
+    ? props.description + ' Ключові послуги: ' + props.keywords
+    : 'IT-рішення для вашого бізнесу';
+  return baseDesc.length > 150 ? baseDesc.slice(0, 150) + '...' : baseDesc;
 });
 
 const structuredData = computed(() => {
@@ -56,31 +52,22 @@ useHead({
   htmlAttrs: {
     lang: locale.value === 'en' ? 'en-US' : 'uk-UA',
   },
-  title: localizedTitle.value,
-  link: [
-    { rel: 'canonical', href: currentUrl.value },
-    {
-      rel: 'preload',
-      as: 'image',
-      href: urlImage.value,
-      imagesrcset: `${urlImage.value}?size=1200x630 1200w`,
-      imagesizes: '(max-width: 1200px) 100vw',
-    },
-  ],
+  title: props.title,
+  link: [{ rel: 'canonical', href: currentUrl.value }],
   meta: [
     // Базові
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'description', content: props.description + ' Ключові послуги: ' + props.keywords },
+    { name: 'description', content: trimmedDescription.value },
     { name: 'author', content: 'IT-Starkon' },
     { name: 'application-name', content: 'IT-Starkon' },
     { name: 'theme-color', content: '#0057b7' },
     { name: 'keywords', content: props.keywords },
     { name: 'author', content: 'Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові' },
     // OpenGraph для Facebook та LinkedIn
-    { property: 'og:title', content: localizedTitle.value },
-    { property: 'og:description', content: localizedDescription.value },
+    { property: 'og:title', content: props.title },
+    { property: 'og:description', content: trimmedDescription.value },
     { property: 'og:type', content: 'article' },
     { property: 'og:site_name', content: 'Віртуальні 3D тури та IT-рішення для бізнесу в Старокостянтинові' },
     { property: 'og:image', content: urlImage.value },
@@ -94,8 +81,8 @@ useHead({
     { property: 'fb:app_id', content: config.public.facebookAppId || '714008411407083' },
     // Twitter Cards
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: localizedTitle.value },
-    { name: 'twitter:description', content: localizedDescription.value },
+    { name: 'twitter:title', content: props.title },
+    { name: 'twitter:description', content: trimmedDescription.value },
     { name: 'twitter:image', content: urlImage.value },
     { name: 'twitter:site', content: '@cfhope' },
     { name: 'twitter:creator', content: '@cfhope' },
